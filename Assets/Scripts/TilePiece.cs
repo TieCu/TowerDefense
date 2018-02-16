@@ -5,14 +5,4 @@ using UnityEngine;
 public class TilePiece : MonoBehaviour
 {
 	[SerializeField] Sprite m_texture = null;
-
-	void Start()
-	{
-
-	}
-
-	void Update()
-	{
-
-	}
 }
