@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour {
+public class Tile : MonoBehaviour
+{
+	[SerializeField] Sprite m_texture = null;
 
-	// Use this for initialization
-	void Start () {
-		
+	void Start()
+	{
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void Update()
+	{
+
 	}
 }
