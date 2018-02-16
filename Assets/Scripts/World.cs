@@ -6,8 +6,8 @@ public class World : MonoBehaviour
 {
 	enum eObjective { ESCAPE, DEFEND }
 
-	[SerializeField] PathPiece[] m_path;
 	[SerializeField] eObjective m_task;
+	[SerializeField] float m_health;
 
 	float m_timer = 0.0f;
 
@@ -19,5 +19,10 @@ public class World : MonoBehaviour
 	void Update()
 	{
 		m_timer += Time.deltaTime;
+	}
+
+	public void Invaded(float value)
+	{
+		m_health -= value;
 	}
 }
