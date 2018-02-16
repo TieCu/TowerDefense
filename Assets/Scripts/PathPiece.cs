@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathPiece : MonoBehaviour
+public class PathPiece : TilePiece
 {
-	enum eDirection { UP, DOWN, LEFT, RIGHT }
-	enum eFunction { PATH, SPAWN, FINISH }
+	public enum eDirection { UP, DOWN, LEFT, RIGHT }
+	public enum eFunction { PATH, SPAWN, FINISH }
 
 	[SerializeField] eDirection m_contribute;
 	[SerializeField] eFunction m_purpose;
+	[SerializeField] GameObject m_spawns = null;
 
-	void Start()
-	{
-
-	}
+	public eDirection Contribution { get { return m_contribute; } }
+	public eFunction Purpose { get { return m_purpose; } }
 
 	void Update()
 	{
-
+		if(m_spawns)
+		{
+			Instantiate<GameObject>(m_spawns);
+		}
 	}
 }

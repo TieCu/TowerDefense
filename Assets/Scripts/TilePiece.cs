@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public class TilePiece : MonoBehaviour
 {
 	[SerializeField] Sprite m_texture = null;
 
