@@ -11,7 +11,7 @@ public class AI : MonoBehaviour
 	[SerializeField] float m_value = 1.0f;
 	[SerializeField] float m_damage = 1.0f;
 
-	private Vector2 m_direction;
+	Vector2 m_direction;
 
 	public float Value { get { return m_value; } }
 

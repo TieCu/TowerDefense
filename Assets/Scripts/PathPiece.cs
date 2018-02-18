@@ -25,8 +25,19 @@ public class PathPiece : TilePiece
 		{
 			if (Purpose == eFunction.SPAWN && m_spawns && SpawnerOn)
 			{
-				Instantiate<AI>(m_spawns, transform.position + (Vector3.back / 2), Quaternion.identity);
+				Spawner spawn = gameObject.GetComponent<Spawner>();
+				if (spawn)
+				{
+					Instantiate<AI>(m_spawns, transform.position + (Vector3.back / 2), Quaternion.identity, spawn.Bin);
+					spawn.PopulationIncrease();
+				}
+				else
+				{
+					Instantiate<AI>(m_spawns, transform.position + (Vector3.back / 2), Quaternion.identity);
+				}
+
 				m_spawns.NewTile(this);
+
 			}
 
 			m_spawnTimer = 0.0f;
@@ -39,8 +50,6 @@ public class PathPiece : TilePiece
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		print("Touched");
-
 		AI ai = collision.GetComponent<AI>();
 		if (ai)
 		{
@@ -66,8 +75,6 @@ public class PathPiece : TilePiece
 		AI ai = other.GetComponent<AI>();
 		if (ai)
 		{
-			print("Touched");
-
 			if (m_purpose == eFunction.FINISH)
 			{
 				World world = FindObjectOfType<World>();

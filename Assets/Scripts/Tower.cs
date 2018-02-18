@@ -30,6 +30,20 @@ public class Tower : MonoBehaviour
     void Start()
     {
         m_attackTimer = m_attackRate;
+
+		CircleCollider2D circle = gameObject.GetComponent<CircleCollider2D>();
+		if(circle)
+		{
+			circle.radius = m_attackRadius;
+		}
+		else
+		{
+			SphereCollider ball = gameObject.GetComponent<SphereCollider>();
+			if(ball)
+			{
+				ball.radius = m_attackRadius;
+			}
+		}
     }
     
     void Update()
@@ -59,7 +73,29 @@ public class Tower : MonoBehaviour
         }
     }
 
-    private void UpgradeTower()
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Enemy")
+		{
+			if (!m_target)
+			{
+				m_target = collision.gameObject;
+				m_enemyInfo = collision.gameObject.GetComponent<AI>();
+			}
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		
+	}
+
+	private void UpgradeTower()
     {       
         if(m_towerIndex < m_towers.Length || m_towerIndex < m_upgradeModifiers.Length)
         {
