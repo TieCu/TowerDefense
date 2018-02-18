@@ -9,6 +9,7 @@ public class AI : MonoBehaviour
 	[SerializeField] float m_health = 10.0f;
 	[SerializeField] float m_speed = 1.0f;
 	[SerializeField] float m_value = 1.0f;
+	[SerializeField] float m_damage = 1.0f;
 
 	private Vector2 m_direction;
 
@@ -28,6 +29,15 @@ public class AI : MonoBehaviour
 		velocity.y = m_direction.y;
 
 		transform.position = transform.position + (velocity * Time.deltaTime * m_speed);
+	}
+
+	private void OnDestroy()
+	{
+		World world = FindObjectOfType<World>();
+		if (world)
+		{
+			//add cash to world
+		}
 	}
 
 	public void NewTile(PathPiece tile)
