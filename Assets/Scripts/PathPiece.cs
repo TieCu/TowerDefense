@@ -11,33 +11,34 @@ public class PathPiece : TilePiece
 	[SerializeField] eFunction m_purpose;
 	[SerializeField] AI m_spawns = null;
 	[SerializeField] float m_spawnTime = 1.0f;
-	[SerializeField] bool m_spawnerOn;
+	[SerializeField] int m_channel = 0;
 
 	float m_spawnTimer = 0.0f;
 
 	public eDirection Contribution { get { return m_contribute; } }
 	public eFunction Purpose { get { return m_purpose; } }
-	public bool SpawnerOn { get { return m_spawnerOn; } set { m_spawnerOn = value; } }
 
 	void Update()
 	{
 		if (m_spawnTimer >= m_spawnTime)
 		{
-			if (Purpose == eFunction.SPAWN && m_spawns && SpawnerOn)
+			if (Purpose == eFunction.SPAWN && m_spawns)
 			{
 				Spawner spawn = gameObject.GetComponent<Spawner>();
 				if (spawn)
 				{
-					Instantiate<AI>(m_spawns, transform.position + (Vector3.back / 2), Quaternion.identity, spawn.Bin);
-					spawn.PopulationIncrease();
+					if (spawn.SpawnerOn)
+					{
+						GameObject go = spawn.Spawn(m_spawns.gameObject);
+						print(m_contribute);
+						go.GetComponent<AI>().NewTile(this, m_channel);
+					}
 				}
 				else
 				{
-					Instantiate<AI>(m_spawns, transform.position + (Vector3.back / 2), Quaternion.identity);
+					AI bot  = Instantiate<AI>(m_spawns, transform.position + (Vector3.back / 2), Quaternion.identity);
+					bot.NewTile(this, m_channel);
 				}
-
-				m_spawns.NewTile(this);
-
 			}
 
 			m_spawnTimer = 0.0f;
@@ -53,19 +54,21 @@ public class PathPiece : TilePiece
 		AI ai = collision.GetComponent<AI>();
 		if (ai)
 		{
-
-			if (m_purpose == eFunction.FINISH)
+			if (ai.Channel == m_channel || m_channel == 0)
 			{
-				World world = FindObjectOfType<World>();
-				if(world)
+				if (m_purpose == eFunction.FINISH)
 				{
-					world.Invaded(ai.Value);
-					Destroy(collision.gameObject);
+					World world = FindObjectOfType<World>();
+					if (world)
+					{
+						world.Invaded(ai.Value);
+						Destroy(collision.gameObject);
+					}
 				}
-			}
-			else
-			{
-				ai.NewTile(this);
+				else
+				{
+					ai.NewTile(this);
+				}
 			}
 		}
 	}
@@ -75,18 +78,21 @@ public class PathPiece : TilePiece
 		AI ai = other.GetComponent<AI>();
 		if (ai)
 		{
-			if (m_purpose == eFunction.FINISH)
+			if (ai.Channel == m_channel || m_channel == 0)
 			{
-				World world = FindObjectOfType<World>();
-				if (world)
+				if (m_purpose == eFunction.FINISH)
 				{
-					world.Invaded(ai.Value);
-					Destroy(other.gameObject);
+					World world = FindObjectOfType<World>();
+					if (world)
+					{
+						world.Invaded(ai.Value);
+						Destroy(other.gameObject);
+					}
 				}
-			}
-			else
-			{
-				ai.NewTile(this);
+				else
+				{
+					ai.NewTile(this);
+				}
 			}
 		}
 

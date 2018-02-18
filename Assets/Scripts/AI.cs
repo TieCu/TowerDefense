@@ -12,8 +12,10 @@ public class AI : MonoBehaviour
 	[SerializeField] float m_damage = 1.0f;
 
 	Vector2 m_direction;
+	int m_channel = 0;
 
-	public float Value { get { return m_value; } }
+	public float Value { get { return m_damage; } }
+	public int Channel { get { return m_channel; } }
 
 	private void Start()
 	{
@@ -34,8 +36,36 @@ public class AI : MonoBehaviour
 		World world = FindObjectOfType<World>();
 		if (world)
 		{
-			//add cash to world
+			world.AddToCoins(m_value);
 		}
+	}
+
+	public void NewTile(PathPiece tile, int channel)
+	{
+		//possible other tile types
+
+		PathPiece.eDirection current = tile.Contribution;
+
+		switch (current)
+		{
+			case PathPiece.eDirection.UP:
+				m_direction = Vector2.up;
+				break;
+			case PathPiece.eDirection.DOWN:
+				m_direction = Vector2.down;
+				break;
+			case PathPiece.eDirection.LEFT:
+				m_direction = Vector2.left;
+				break;
+			case PathPiece.eDirection.RIGHT:
+				m_direction = Vector2.right;
+				break;
+			default:
+				m_direction = Vector2.zero;
+				break;
+		}
+
+		m_channel = channel;
 	}
 
 	public void NewTile(PathPiece tile)
@@ -62,7 +92,6 @@ public class AI : MonoBehaviour
 				m_direction = Vector2.zero;
 				break;
 		}
-
 	}
 
 	public void Attacked(float damage, string effect)
