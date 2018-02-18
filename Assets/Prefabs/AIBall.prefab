@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 54579647679753916}
   m_Layer: 0
   m_Name: AIBall
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,6 +114,7 @@ MonoBehaviour:
   m_health: 10
   m_speed: 1
   m_value: 1
+  m_damage: 1
 --- !u!135 &135587743402692688
 SphereCollider:
   m_ObjectHideFlags: 1
