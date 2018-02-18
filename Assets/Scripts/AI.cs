@@ -7,8 +7,8 @@ public class AI : MonoBehaviour
 	//Type
 	struct Status
 	{
-		int m_status;
-		float m_effectiveness;
+		internal int m_status; //0 Null, 1 Damage, 2 Slow, 3 Block, 4 Freeze, 5 Fire
+		internal float m_effectiveness;
 	}
 
 	[SerializeField] float m_health = 10.0f;
@@ -25,7 +25,10 @@ public class AI : MonoBehaviour
 
 	private void Start()
 	{
-		m_direction = Vector2.right;
+		m_direction = Vector2.zero;
+
+		m_status = new Status();
+		m_status.m_status = 0;
 	}
 
 	void Update()
@@ -35,11 +38,13 @@ public class AI : MonoBehaviour
 			Destroy(gameObject);
 		}
 
+		float speed = m_speed;
+
 		Vector3 velocity = Vector3.zero;
 		velocity.x = m_direction.x;
 		velocity.y = m_direction.y;
 
-		transform.position = transform.position + (velocity * Time.deltaTime * m_speed);
+		transform.position = transform.position + (velocity * Time.deltaTime * speed);
 	}
 
 	private void OnDestroy()
@@ -107,7 +112,8 @@ public class AI : MonoBehaviour
 
 	public void StatusChanged(int type, float damage)
 	{
-
+		m_status.m_status = type;
+		m_status.m_effectiveness = damage;
 	}
 
 	public void Attacked(float damage, string effect)
