@@ -30,7 +30,6 @@ public class PathPiece : TilePiece
 					if (spawn.SpawnerOn)
 					{
 						GameObject go = spawn.Spawn(m_spawns.gameObject);
-						print(m_contribute);
 						go.GetComponent<AI>().NewTile(this, m_channel);
 					}
 				}

@@ -20,7 +20,16 @@ public class Spawner : MonoBehaviour
 
 	public GameObject Spawn(GameObject go)
 	{
-		GameObject copy = Instantiate(go, transform.position + (Vector3.back / 2), Quaternion.identity, Bin);
+		GameObject copy = null;
+		if (Bin)
+		{
+			copy = Instantiate(go, transform.position + (Vector3.back / 2), Quaternion.identity, Bin);
+		}
+		else
+		{
+			copy = Instantiate(go, transform.position + (Vector3.back / 2), Quaternion.identity);
+		}
+
 		PopulationIncrease();
 
 		return copy;
