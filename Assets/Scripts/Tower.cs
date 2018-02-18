@@ -40,7 +40,7 @@ public class Tower : MonoBehaviour
         {
             if (m_target)
             {
-                m_enemyInfo.TakeDamage(m_damage);
+                m_enemyInfo.Attacked(m_damage, "Was Hit");
 
                 m_attackTimer = m_attackRate;
             }            
