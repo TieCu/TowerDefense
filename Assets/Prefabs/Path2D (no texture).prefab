@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114190891573032220}
   - component: {fileID: 61802343988083732}
   m_Layer: 0
-  m_Name: Path2D
+  m_Name: Path2D (no texture)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
