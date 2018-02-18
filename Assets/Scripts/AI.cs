@@ -24,6 +24,11 @@ public class AI : MonoBehaviour
 
 	void Update()
 	{
+		if(m_health <= 0.0f)
+		{
+			Destroy(gameObject);
+		}
+
 		Vector3 velocity = Vector3.zero;
 		velocity.x = m_direction.x;
 		velocity.y = m_direction.y;

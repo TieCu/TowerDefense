@@ -7,29 +7,56 @@ public class Obsticles : MonoBehaviour
 	enum eEffect { SLOW, DAMAGE, BLOCK }
 
 	[SerializeField] float m_cost = 1.0f;
-	[SerializeField] float m_health = 10.0f;
 	[SerializeField] float m_size = 1.0f;
 	[SerializeField] float m_rating = 1.0f;
+	[SerializeField] int m_charge = 10;
 	[SerializeField] eEffect m_effect;
 
 	private void Update()
 	{
-		Collider[] colliders = Physics.OverlapSphere(transform.position, m_size);
-
-		if(colliders != null)
+		if(m_charge <= 0)
 		{
-			print("There's something here");
-			foreach (Collider c in colliders)
-			{
-				print(c.name + " is here");
-
-				AI bot = c.gameObject.GetComponent<AI>();
-				if(bot)
-				{
-					SomeoneThere(bot);
-				}
-			}
+			Destroy(gameObject);
 		}
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		AI bot = other.gameObject.GetComponent<AI>();
+		if (bot && m_effect != eEffect.BLOCK)
+		{
+			m_charge -= 1;
+		}
+
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		AI bot = collision.gameObject.GetComponent<AI>();
+		if (bot && m_effect != eEffect.BLOCK)
+		{
+			m_charge -= 1;
+		}
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		AI bot = other.gameObject.GetComponent<AI>();
+		if (bot)
+		{
+			SomeoneThere(bot);
+		}
+
+	}
+
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		AI bot = collision.gameObject.GetComponent<AI>();
+		if (bot)
+		{
+			SomeoneThere(bot);
+		}
+
 	}
 
 	private void SomeoneThere(AI person)
