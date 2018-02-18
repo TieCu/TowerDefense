@@ -31,4 +31,17 @@ public class World : Singleton<World>
     {
         m_coins += newCoins;
     }
+
+    public bool RemoveCoins(float cost)
+    {
+        bool wasSuccessful = false;
+
+        if(cost <= m_coins)
+        {
+            m_coins -= cost;
+            wasSuccessful = true;
+        }
+
+        return wasSuccessful;       
+    }
 }
