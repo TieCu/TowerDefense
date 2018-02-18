@@ -75,6 +75,7 @@ public class Tower : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("A 3D object entered range");
         if(other.gameObject.tag == "Enemy")
         {
             m_possibleTargets.Add(other.gameObject);
@@ -89,6 +90,7 @@ public class Tower : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+        Debug.Log("A 2D enemy entered range");
 		if (collision.gameObject.tag == "Enemy")
 		{
 			if (!m_target)
