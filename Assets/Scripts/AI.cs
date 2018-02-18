@@ -22,8 +22,6 @@ public class AI : MonoBehaviour
 
 	void Update()
 	{
-		print(m_direction.x + " " + m_direction.y);
-
 		Vector3 velocity = Vector3.zero;
 		velocity.x = m_direction.x;
 		velocity.y = m_direction.y;
@@ -65,7 +63,6 @@ public class AI : MonoBehaviour
 				break;
 		}
 
-		print(m_direction.x + " " + m_direction.y);
 	}
 
 	public void Attacked(float damage, string effect)

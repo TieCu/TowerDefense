@@ -39,10 +39,11 @@ public class PathPiece : TilePiece
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		print("Touched");
+
 		AI ai = collision.GetComponent<AI>();
 		if (ai)
 		{
-			print("Touched");
 
 			if (m_purpose == eFunction.FINISH)
 			{
