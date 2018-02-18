@@ -103,27 +103,8 @@ public class Tower : MonoBehaviour
 	}
 
 	private void UpgradeTower()
-    {       
-        if(m_towerIndex < m_towers.Length || m_towerIndex < m_upgradeModifiers.Length)
-=======
-    private void OnTriggerExit(Collider other)
-    {
-        m_possibleTargets.Remove(other.gameObject);
-
-        if(m_possibleTargets.Count > 0)
-        {
-            m_target = m_possibleTargets[0];
-        }
-        else
-        {
-            m_target = null;
-        }
-    }
-
-    private void UpgradeTower()
     {
         if (World.Instance.RemoveCoins(m_upgradeCosts[m_towerIndex]))
->>>>>>> d5fa3b653269e99f6a40184c64c2df61a106bf33
         {
             if (m_towerIndex < m_towers.Length || m_towerIndex < m_upgradeModifiers.Length)
             {
