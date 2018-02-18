@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33742760769415902}
   - component: {fileID: 23692739196043736}
   - component: {fileID: 114098497358509038}
+  - component: {fileID: 114165171485239062}
   - component: {fileID: 65197041949601476}
   m_Layer: 0
   m_Name: Path3D (no texture)
@@ -107,9 +108,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e2b8ca869e2f443a5cf1cba70e3830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_texture: {fileID: 0}
   m_contribute: 0
   m_purpose: 0
   m_spawns: {fileID: 0}
   m_spawnTime: 1
-  m_spawnerOn: 0
+  m_channel: 0
+--- !u!114 &114165171485239062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010812465022474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b3ba15b8908e143a2a140607a8a85f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_texture: {fileID: 0}

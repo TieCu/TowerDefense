@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212929087177015462}
   - component: {fileID: 114601673418548590}
   - component: {fileID: 50407691352061568}
+  - component: {fileID: 60246814734988910}
   m_Layer: 0
   m_Name: AIBarrel
   m_TagString: Enemy
@@ -62,6 +63,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &60246814734988910
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632547217943244}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.48, y: 0.48}
+    newSize: {x: 0.48, y: 0.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.22999999, y: 0.24}
+      - {x: -0.24, y: 0.19}
+      - {x: -0.24, y: -0.19999999}
+      - {x: -0.21, y: -0.24}
+      - {x: 0.24, y: -0.24}
+      - {x: 0.24, y: 0.24}
 --- !u!114 &114601673418548590
 MonoBehaviour:
   m_ObjectHideFlags: 1
