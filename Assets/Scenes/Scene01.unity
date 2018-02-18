@@ -237,6 +237,12 @@ Prefab:
       propertyPath: m_Name
       value: Path3D (no texture) (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114098497358509038, guid: 320f6e3181066f04ba6e9716ca3ed166,
+        type: 2}
+      propertyPath: m_texture
+      value: 
+      objectReference: {fileID: 21300000, guid: 374963bc01706274dae43f57cba957bb,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
   m_IsPrefabParent: 0
@@ -307,6 +313,12 @@ Prefab:
       propertyPath: m_Name
       value: Path3D (no texture) (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114098497358509038, guid: 320f6e3181066f04ba6e9716ca3ed166,
+        type: 2}
+      propertyPath: m_texture
+      value: 
+      objectReference: {fileID: 21300000, guid: 187fad510c9196c479bf07be8ef92d1f,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
   m_IsPrefabParent: 0
@@ -378,6 +390,12 @@ Prefab:
       propertyPath: m_Name
       value: Path3D (no texture) (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114098497358509038, guid: 320f6e3181066f04ba6e9716ca3ed166,
+        type: 2}
+      propertyPath: m_texture
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e63dc224ed643a46835189ab7b04bb8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
   m_IsPrefabParent: 0
@@ -449,6 +467,12 @@ Prefab:
       propertyPath: m_Name
       value: Path3D (no texture) (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114098497358509038, guid: 320f6e3181066f04ba6e9716ca3ed166,
+        type: 2}
+      propertyPath: m_texture
+      value: 
+      objectReference: {fileID: 21300000, guid: 9219bc96a4f0b5b4faf0566e61423368,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
   m_IsPrefabParent: 0
@@ -510,12 +534,18 @@ Prefab:
     - target: {fileID: 114098497358509038, guid: 320f6e3181066f04ba6e9716ca3ed166,
         type: 2}
       propertyPath: m_contribute
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114098497358509038, guid: 320f6e3181066f04ba6e9716ca3ed166,
+        type: 2}
+      propertyPath: m_texture
+      value: 
+      objectReference: {fileID: 21300000, guid: 47f196efb29d1624784c2010094995ba,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
   m_IsPrefabParent: 0

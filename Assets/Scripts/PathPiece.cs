@@ -25,7 +25,7 @@ public class PathPiece : TilePiece
 		{
 			if (Purpose == eFunction.SPAWN && m_spawns && SpawnerOn)
 			{
-				Instantiate<AI>(m_spawns, transform.position + (Vector3.forward / 2), Quaternion.identity);
+				Instantiate<AI>(m_spawns, transform.position + (Vector3.back / 2), Quaternion.identity);
 				m_spawns.NewTile(this);
 			}
 
