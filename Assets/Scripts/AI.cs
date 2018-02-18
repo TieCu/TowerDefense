@@ -57,4 +57,12 @@ public class AI : MonoBehaviour
 
 		print(m_direction.x + " " + m_direction.y);
 	}
+
+	public void Attacked(float damage, string effect)
+	{
+		//future effects
+		if (damage > 0) {
+			m_health -= damage;
+		}
+	}
 }
