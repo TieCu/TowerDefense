@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Obsticles : MonoBehaviour
 {
-	enum eEffect { SLOW, DAMAGE, BLOCK }
+	public enum eEffect { SLOW, DAMAGE, BLOCK }
 
 	[SerializeField] float m_cost = 1.0f;
 	[SerializeField] float m_size = 1.0f;
@@ -23,7 +23,7 @@ public class Obsticles : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		AI bot = other.gameObject.GetComponent<AI>();
-		if (bot && m_effect != eEffect.BLOCK)
+		if (bot)
 		{
 			m_charge -= 1;
 		}
@@ -33,9 +33,19 @@ public class Obsticles : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		AI bot = collision.gameObject.GetComponent<AI>();
-		if (bot && m_effect != eEffect.BLOCK)
+		if (bot)
 		{
-			m_charge -= 1;
+			print((int)m_effect);
+
+			if (m_effect != eEffect.DAMAGE)
+			{
+				bot.StatusChanged((int)m_effect, m_rating);
+			}
+			if (m_effect != eEffect.BLOCK)
+			{
+				m_charge -= 1;
+			}
+
 		}
 	}
 
@@ -44,7 +54,11 @@ public class Obsticles : MonoBehaviour
 		AI bot = other.gameObject.GetComponent<AI>();
 		if (bot)
 		{
-			SomeoneThere(bot);
+			if (m_effect == eEffect.DAMAGE)
+			{
+				bot.Attacked(m_rating * Time.deltaTime, "Nothing yet");
+				print("Damaging");
+			}
 		}
 
 	}
@@ -54,25 +68,11 @@ public class Obsticles : MonoBehaviour
 		AI bot = collision.gameObject.GetComponent<AI>();
 		if (bot)
 		{
-			SomeoneThere(bot);
-		}
-
-	}
-
-	private void SomeoneThere(AI person)
-	{
-		switch(m_effect)
-		{
-			case eEffect.BLOCK:
-				//Ai status change blocked
-				break;
-			case eEffect.SLOW:
-				//Ai status change slowed
-				break;
-			case eEffect.DAMAGE:
-				person.Attacked(m_rating * Time.deltaTime, "Nothing yet");
+			if (m_effect == eEffect.DAMAGE) {
+				bot.Attacked(m_rating * Time.deltaTime, "Nothing yet");
 				print("Damaging");
-				break;
+			}
 		}
+
 	}
 }

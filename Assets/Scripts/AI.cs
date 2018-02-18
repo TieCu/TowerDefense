@@ -5,12 +5,18 @@ using UnityEngine;
 public class AI : MonoBehaviour
 {
 	//Type
+	struct Status
+	{
+		int m_status;
+		float m_effectiveness;
+	}
 
 	[SerializeField] float m_health = 10.0f;
 	[SerializeField] float m_speed = 1.0f;
 	[SerializeField] float m_value = 1.0f;
 	[SerializeField] float m_damage = 1.0f;
 
+	Status m_status;
 	Vector2 m_direction;
 	int m_channel = 0;
 
@@ -97,6 +103,11 @@ public class AI : MonoBehaviour
 				m_direction = Vector2.zero;
 				break;
 		}
+	}
+
+	public void StatusChanged(int type, float damage)
+	{
+
 	}
 
 	public void Attacked(float damage, string effect)
