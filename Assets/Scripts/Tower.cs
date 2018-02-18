@@ -31,7 +31,7 @@ public class Tower : MonoBehaviour
 
     SpriteRenderer m_spriteRenderer;
     GameObject m_target;
-    List<GameObject> m_possibleTargets;
+    List<GameObject> m_possibleTargets = new List<GameObject>();
     AI m_enemyInfo;
 
     int m_towerIndex = 0;
@@ -64,18 +64,17 @@ public class Tower : MonoBehaviour
         {
             if (m_target)
             {
-                Instantiate(m_projectile, m_emitter.transform.position, Quaternion.identity, m_projectileContainer.transform);
-
+                Projectile bullet = Instantiate(m_projectile, m_emitter.transform.position, Quaternion.identity, m_projectileContainer.transform);
+                bullet.SetTarget(m_target);
                 m_enemyInfo.Attacked(m_damage, "Was Hit");
 
                 m_attackTimer = m_attackRate;
-            }            
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("A 3D object entered range");
         if(other.gameObject.tag == "Enemy")
         {
             m_possibleTargets.Add(other.gameObject);
@@ -90,7 +89,6 @@ public class Tower : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-        Debug.Log("A 2D enemy entered range");
 		if (collision.gameObject.tag == "Enemy")
 		{
 			if (!m_target)
