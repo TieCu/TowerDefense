@@ -74,7 +74,7 @@ public class Tower : MonoBehaviour
 
     private void SellTower()
     {
-        Game.Instance.AddMoney(m_value * .75);
+        World.Instance.AddToCoins(m_value * .75f);
         Destroy(gameObject);
     }
 }

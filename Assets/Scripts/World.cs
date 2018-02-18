@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class World : MonoBehaviour
+public class World : Singleton<World>
 {
 	enum eObjective { ESCAPE, DEFEND }
 
 	[SerializeField] eObjective m_task;
 	[SerializeField] float m_health;
+    [SerializeField] float m_coins;
 
 	float m_timer = 0.0f;
 
@@ -25,4 +26,9 @@ public class World : MonoBehaviour
 	{
 		m_health -= value;
 	}
+
+    public void AddToCoins(float newCoins)
+    {
+        m_coins += newCoins;
+    }
 }
