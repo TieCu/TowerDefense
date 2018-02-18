@@ -19,6 +19,11 @@ public class Tower : MonoBehaviour
     [SerializeField] float[] m_upgradeCosts;
     [SerializeField] Sprite[] m_towers;
 
+    [Header("Projectiles")]
+    [SerializeField] GameObject m_emitter;
+    [SerializeField] Projectile m_projectile;
+    [SerializeField] GameObject m_projectileContainer;
+ 
     public float value { get { return m_value; } }
     public float attackRadius { get { return m_attackRadius; } }
     public float damage { get { return m_damage; } }
@@ -59,6 +64,8 @@ public class Tower : MonoBehaviour
         {
             if (m_target)
             {
+                Instantiate(m_projectile, m_emitter.transform.position, Quaternion.identity, m_projectileContainer.transform);
+
                 m_enemyInfo.Attacked(m_damage, "Was Hit");
 
                 m_attackTimer = m_attackRate;
@@ -94,13 +101,31 @@ public class Tower : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		
-	}
+        m_possibleTargets.Remove(other.gameObject);
+
+        if (m_possibleTargets.Count > 0)
+        {
+            m_target = m_possibleTargets[0];
+        }
+        else
+        {
+            m_target = null;
+        }
+    }
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		
-	}
+        m_possibleTargets.Remove(collision.gameObject);
+
+        if (m_possibleTargets.Count > 0)
+        {
+            m_target = m_possibleTargets[0];
+        }
+        else
+        {
+            m_target = null;
+        }
+    }
 
 	private void UpgradeTower()
     {
