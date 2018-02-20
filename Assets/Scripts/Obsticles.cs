@@ -7,7 +7,6 @@ public class Obsticles : MonoBehaviour
 	public enum eEffect { NULL, DAMAGE, SLOW, BLOCK, FREEZE, BURN }
 
 	[SerializeField] float m_cost = 1.0f;
-	[SerializeField] float m_size = 1.0f;
 	[SerializeField] [Range(0.1f, 100.0f)] float m_rating = 1.0f;
 	[SerializeField] float m_extraDataSlot = 0.0f;
 	[SerializeField] float m_charge = 10;
@@ -20,8 +19,6 @@ public class Obsticles : MonoBehaviour
 
 	private void Start()
 	{
-		transform.localScale = transform.localScale * m_size;
-
 		switch(m_effect)
 		{
 			case eEffect.FREEZE:
@@ -40,7 +37,17 @@ public class Obsticles : MonoBehaviour
 	{
 		if(m_charge <= 0)
 		{
-			Destroy(gameObject);
+			var parts = gameObject.GetComponents<Obsticles>();
+			print(parts.Length);
+
+			if(parts.Length - 1 <= 0)
+			{
+				Destroy(gameObject);
+			}
+			else
+			{
+				Destroy(this);
+			}
 		}
 
 		if(m_blocking > 0 && m_effect == eEffect.BLOCK)
