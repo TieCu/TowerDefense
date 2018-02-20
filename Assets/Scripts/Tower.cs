@@ -66,7 +66,7 @@ public class Tower : MonoBehaviour
             {
                 Projectile bullet = Instantiate(m_projectile, m_emitter.transform.position, Quaternion.identity, m_projectileContainer.transform);
                 bullet.SetTarget(m_target);
-                m_enemyInfo.Attacked(m_damage, "Was Hit");
+                m_enemyInfo.Attacked(m_damage);
 
                 m_attackTimer = m_attackRate;
             }
