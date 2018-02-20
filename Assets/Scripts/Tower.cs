@@ -46,9 +46,15 @@ public class Tower : MonoBehaviour
         {
             if (m_target)
             {
-                Projectile bullet = Instantiate(m_data.projectile, m_data.emitter.transform.position, Quaternion.identity, m_data.projectileContainer.transform);
+                Projectile bullet = Instantiate(m_data.projectile, m_data.emitter.transform.position, Quaternion.identity, World.Instance.projectileContainer.transform);
                 bullet.SetTarget(m_target);
+
                 m_enemyInfo.Attacked(m_data.damage);
+
+                if(m_data.towerStatus.status != TowerData.eStatus.NONE)
+                {
+                    m_enemyInfo.StatusChanged((int)m_data.towerStatus.status, m_data.towerStatus.statusDamage, m_data.towerStatus.time, true);
+                }
 
                 m_attackTimer = m_data.attackRate;
             }
