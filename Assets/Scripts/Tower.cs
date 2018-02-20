@@ -4,30 +4,12 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public enum eDamageType
-    {
-        BULLET,
-        MISSLE
-    }
-
-    [SerializeField] [Range(10.0f, 50000.0f)] float m_value;
-    [SerializeField] [Range(1.0f, 50.0f)] float m_attackRadius = 15.0f;
-    [SerializeField] [Range(1.0f, 1000.0f)] float m_damage = 10.0f;
-    [SerializeField] [Range(.1f, 3.0f)] float m_attackRate = 1.0f;
-    [SerializeField] eDamageType m_damageType;
-    [SerializeField] float[] m_upgradeModifiers;
-    [SerializeField] float[] m_upgradeCosts;
-    [SerializeField] Sprite[] m_towers;
-
-    [Header("Projectiles")]
-    [SerializeField] GameObject m_emitter;
-    [SerializeField] Projectile m_projectile;
-    [SerializeField] GameObject m_projectileContainer;
+    [SerializeField] TowerData m_data;
  
-    public float value { get { return m_value; } }
-    public float attackRadius { get { return m_attackRadius; } }
-    public float damage { get { return m_damage; } }
-    public float attackRate { get { return m_attackRate; } }
+    public float value { get { return m_data.value; } }
+    public float attackRadius { get { return m_data.attackRadius; } }
+    public float damage { get { return m_data.damage; } }
+    public float attackRate { get { return m_data.attackRate; } }
 
     SpriteRenderer m_spriteRenderer;
     GameObject m_target;
@@ -39,19 +21,19 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
-        m_attackTimer = m_attackRate;
+        m_attackTimer = m_data.attackRate;
 
 		CircleCollider2D circle = gameObject.GetComponent<CircleCollider2D>();
 		if(circle)
 		{
-			circle.radius = m_attackRadius;
+			circle.radius = m_data.attackRadius;
 		}
 		else
 		{
 			SphereCollider ball = gameObject.GetComponent<SphereCollider>();
 			if(ball)
 			{
-				ball.radius = m_attackRadius;
+				ball.radius = m_data.attackRadius;
 			}
 		}
     }
@@ -64,11 +46,11 @@ public class Tower : MonoBehaviour
         {
             if (m_target)
             {
-                Projectile bullet = Instantiate(m_projectile, m_emitter.transform.position, Quaternion.identity, m_projectileContainer.transform);
+                Projectile bullet = Instantiate(m_data.projectile, m_data.emitter.transform.position, Quaternion.identity, m_data.projectileContainer.transform);
                 bullet.SetTarget(m_target);
-                m_enemyInfo.Attacked(m_damage);
+                m_enemyInfo.Attacked(m_data.damage);
 
-                m_attackTimer = m_attackRate;
+                m_attackTimer = m_data.attackRate;
             }
         }
     }
@@ -129,14 +111,14 @@ public class Tower : MonoBehaviour
 
 	private void UpgradeTower()
     {
-        if (World.Instance.RemoveCoins(m_upgradeCosts[m_towerIndex]))
+        if (World.Instance.RemoveCoins(m_data.upgradeCosts[m_towerIndex]))
         {
-            if (m_towerIndex < m_towers.Length || m_towerIndex < m_upgradeModifiers.Length)
+            if (m_towerIndex < m_data.towers.Length || m_towerIndex < m_data.upgradeModifiers.Length)
             {
-                m_spriteRenderer.sprite = m_towers[m_towerIndex];
-                m_damage *= m_upgradeModifiers[m_towerIndex];
-                m_attackRadius *= m_upgradeModifiers[m_towerIndex];
-                m_attackRate /= m_upgradeModifiers[m_towerIndex];
+                m_spriteRenderer.sprite = m_data.towers[m_towerIndex];
+                m_data.damage *= m_data.upgradeModifiers[m_towerIndex];
+                m_data.attackRadius *= m_data.upgradeModifiers[m_towerIndex];
+                m_data.attackRate /= m_data.upgradeModifiers[m_towerIndex];
 
                 m_towerIndex++;
             }
@@ -145,7 +127,7 @@ public class Tower : MonoBehaviour
 
     private void SellTower()
     {
-        World.Instance.AddToCoins(m_value * .75f);
+        World.Instance.AddToCoins(m_data.value * .75f);
         Destroy(gameObject);
     }
 }
