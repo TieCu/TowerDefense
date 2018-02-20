@@ -17,7 +17,7 @@ public class AI : MonoBehaviour
 	[SerializeField] float m_value = 1.0f;
 	[SerializeField] float m_damage = 1.0f;
 
-	Status m_status;
+	List<Status> m_status;
 	Vector2 m_direction;
 	int m_channel = 0;
 
@@ -28,13 +28,17 @@ public class AI : MonoBehaviour
 	{
 		m_direction = Vector2.zero;
 
-		m_status = new Status();
-		m_status.m_status = 0;
+		m_status = new List<Status>();
+
+		Status start = new Status();
+		start.m_status = 0;
+		m_status.Add(start);
+
 	}
 
 	void Update()
 	{
-		if(m_health <= 0.0f)
+		if (m_health <= 0.0f)
 		{
 			Destroy(gameObject);
 		}
@@ -51,35 +55,46 @@ public class AI : MonoBehaviour
 
 	private void StatusEffect(ref float speed)
 	{
-		switch(m_status.m_status)
+		for(int i=0;i<m_status.Count;i++)
 		{
-			case 1:
-				Attacked(m_status.m_effectiveness * Time.deltaTime);
-				break;
-			case 2:
-				if(m_status.m_effectiveness != 0)
+			switch (m_status[i].m_status)
+			{
+				case 1:
+					Attacked(m_status[i].m_effectiveness * Time.deltaTime);
+					break;
+				case 2:
+					if (m_status[i].m_effectiveness != 0)
+					{
+						speed /= m_status[i].m_effectiveness;
+					}
+					break;
+				case 3:
+					speed = 0;
+					break;
+				case 4:
+					speed = 0;
+					Attacked(Time.deltaTime * m_status[i].m_additionalData);
+					Status cold = m_status[i];
+					cold.m_effectiveness -= Time.deltaTime;
+					m_status[i] = cold;
+					break;
+				case 5:
+					Attacked(Time.deltaTime * m_status[i].m_additionalData);
+					Status burn = m_status[i];
+					burn.m_effectiveness -= Time.deltaTime;
+					m_status[i] = burn;
+					break;
+			}
+
+			if(m_status[i].m_effectiveness <= 0.0f)
+			{
+				if (m_status.Count != 1)
 				{
-					speed /= m_status.m_effectiveness;
+					m_status.Remove(m_status[i]);
 				}
-				break;
-			case 3:
-				speed = 0;
-				break;
-			case 4:
-				speed = 0;
-				Attacked(Time.deltaTime * m_status.m_additionalData);
-				m_status.m_effectiveness -= Time.deltaTime;
-				break;
-			case 5:
-				Attacked(Time.deltaTime * m_status.m_additionalData);
-				m_status.m_effectiveness -= Time.deltaTime;
-				break;
+			}
 		}
 
-		if(m_status.m_effectiveness <= 0.0f)
-		{
-			m_status.m_status = 0;
-		}
 	}
 
 	private void OnDestroy()
@@ -145,15 +160,33 @@ public class AI : MonoBehaviour
 		}
 	}
 
-	public void StatusChanged(int type, float damage)
+	public void StatusChanged(int type, float damage, float addedData, bool AddRemove)
 	{
-		m_status.m_status = type;
-		m_status.m_effectiveness = damage;
-	}
+		bool alreadyAffect = false;
+		foreach (Status s in m_status)
+		{
+			if(s.m_status == type && s.m_effectiveness == damage && s.m_additionalData == addedData)
+			{
+				if (!AddRemove)
+				{
+					m_status.Remove(s);
+				}
 
-	public void DOT(float damage)
-	{
-		m_status.m_additionalData = damage;
+				alreadyAffect = true;
+
+				break;
+			}
+		}
+
+		if (AddRemove && !alreadyAffect)
+		{
+			Status status = new Status();
+			status.m_status = type;
+			status.m_effectiveness = damage;
+			status.m_additionalData = addedData;
+			m_status.Add(status);
+		}
+
 	}
 
 	public void Attacked(float damage)

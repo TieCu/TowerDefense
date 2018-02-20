@@ -19,7 +19,7 @@ public class Obsticles : MonoBehaviour
 
 	private void Start()
 	{
-		switch(m_effect)
+		switch (m_effect)
 		{
 			case eEffect.FREEZE:
 				m_isDOT = true;
@@ -35,12 +35,11 @@ public class Obsticles : MonoBehaviour
 
 	private void Update()
 	{
-		if(m_charge <= 0)
+		if (m_charge <= 0)
 		{
 			var parts = gameObject.GetComponents<Obsticles>();
-			print(parts.Length);
 
-			if(parts.Length - 1 <= 0)
+			if (parts.Length - 1 <= 0)
 			{
 				Destroy(gameObject);
 			}
@@ -50,9 +49,9 @@ public class Obsticles : MonoBehaviour
 			}
 		}
 
-		if(m_blocking > 0 && m_effect == eEffect.BLOCK)
+		if (m_blocking > 0 && m_effect == eEffect.BLOCK)
 		{
-			m_charge -= (Time.deltaTime / m_rating) * m_blocking ;
+			m_charge -= (Time.deltaTime / m_rating) * m_blocking;
 		}
 	}
 
@@ -72,10 +71,9 @@ public class Obsticles : MonoBehaviour
 					m_blocking++;
 				}
 
-				if(m_isDOT)
+				if (m_isDOT)
 				{
-					bot.StatusChanged((int)m_effect, m_rating);
-					bot.DOT(m_extraDataSlot);
+					bot.StatusChanged((int)m_effect, m_rating, m_extraDataSlot, true);
 				}
 			}
 		}
@@ -100,8 +98,7 @@ public class Obsticles : MonoBehaviour
 
 				if (m_isDOT)
 				{
-					bot.StatusChanged((int)m_effect, m_rating);
-					bot.DOT(m_extraDataSlot);
+					bot.StatusChanged((int)m_effect, m_rating, m_extraDataSlot, true);
 				}
 			}
 		}
@@ -109,55 +106,64 @@ public class Obsticles : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-		if (m_effect != eEffect.NULL || !m_isDOT)
+		if (m_effect != eEffect.NULL && !m_isDOT)
 		{
 			AI bot = other.gameObject.GetComponent<AI>();
 			if (bot)
 			{
-				bot.StatusChanged((int)m_effect, m_rating);
+				bot.StatusChanged((int)m_effect, m_rating, m_extraDataSlot, true);
 			}
 		}
 	}
 
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (m_effect != eEffect.NULL || !m_isDOT)
+		if (m_effect != eEffect.NULL && !m_isDOT)
 		{
 			AI bot = collision.gameObject.GetComponent<AI>();
 			if (bot)
 			{
-				bot.StatusChanged((int)m_effect, m_rating);
+				bot.StatusChanged((int)m_effect, m_rating, m_extraDataSlot, true);
 			}
 		}
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
-		AI bot = other.gameObject.GetComponent<AI>();
-		if (bot)
+		if (m_effect != eEffect.NULL)
 		{
-			if (m_effect == eEffect.BLOCK)
-			{
-				m_blocking--;
-			}
 
-			bot.StatusChanged((int)eEffect.NULL, m_rating);
+			AI bot = other.gameObject.GetComponent<AI>();
+			if (bot)
+			{
+				if (m_effect == eEffect.BLOCK)
+				{
+					m_blocking--;
+				}
+				else if (!m_isDOT)
+				{
+					bot.StatusChanged((int)m_effect, m_rating, m_extraDataSlot, false);
+				}
+			}
 		}
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		AI bot = collision.gameObject.GetComponent<AI>();
-		if (bot)
+		if (m_effect != eEffect.NULL)
 		{
-			if (m_effect == eEffect.BLOCK)
-			{
-				m_blocking--;
-			}
 
-			if (!m_isDOT)
+			AI bot = collision.gameObject.GetComponent<AI>();
+			if (bot)
 			{
-				bot.StatusChanged((int)eEffect.NULL, m_rating);
+				if (m_effect == eEffect.BLOCK)
+				{
+					m_blocking--;
+				}
+				else if (!m_isDOT)
+				{
+					bot.StatusChanged((int)m_effect, m_rating, m_extraDataSlot, false);
+				}
 			}
 		}
 	}
