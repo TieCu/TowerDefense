@@ -9,6 +9,7 @@ public class AI : MonoBehaviour
 	{
 		internal int m_status; //0 Null, 1 Damage, 2 Slow, 3 Block, 4 Freeze, 5 Fire
 		internal float m_effectiveness;
+		internal float m_additionalData; //extra dot
 	}
 
 	[SerializeField] float m_health = 10.0f;
@@ -39,12 +40,46 @@ public class AI : MonoBehaviour
 		}
 
 		float speed = m_speed;
+		StatusEffect(ref speed);
 
 		Vector3 velocity = Vector3.zero;
 		velocity.x = m_direction.x;
 		velocity.y = m_direction.y;
 
 		transform.position = transform.position + (velocity * Time.deltaTime * speed);
+	}
+
+	private void StatusEffect(ref float speed)
+	{
+		switch(m_status.m_status)
+		{
+			case 1:
+				Attacked(m_status.m_effectiveness * Time.deltaTime);
+				break;
+			case 2:
+				if(m_status.m_effectiveness != 0)
+				{
+					speed /= m_status.m_effectiveness;
+				}
+				break;
+			case 3:
+				speed = 0;
+				break;
+			case 4:
+				speed = 0;
+				Attacked(Time.deltaTime * m_status.m_additionalData);
+				m_status.m_effectiveness -= Time.deltaTime;
+				break;
+			case 5:
+				Attacked(Time.deltaTime * m_status.m_additionalData);
+				m_status.m_effectiveness -= Time.deltaTime;
+				break;
+		}
+
+		if(m_status.m_effectiveness <= 0.0f)
+		{
+			m_status.m_status = 0;
+		}
 	}
 
 	private void OnDestroy()
@@ -116,9 +151,13 @@ public class AI : MonoBehaviour
 		m_status.m_effectiveness = damage;
 	}
 
-	public void Attacked(float damage, string effect)
+	public void DOT(float damage)
 	{
-		//future effects
+		m_status.m_additionalData = damage;
+	}
+
+	public void Attacked(float damage)
+	{
 		if (damage > 0) {
 			m_health -= damage;
 		}
