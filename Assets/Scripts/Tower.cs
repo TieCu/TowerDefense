@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour
         MISSLE
     }
 
-    [SerializeField] [Range(10.0f, 50000.0f)] float m_value;
+    [SerializeField] [Range(10.0f, 50000.0f)] float m_value = 100.0f;
     [SerializeField] [Range(1.0f, 50.0f)] float m_attackRadius = 15.0f;
     [SerializeField] [Range(1.0f, 1000.0f)] float m_damage = 10.0f;
     [SerializeField] [Range(.1f, 3.0f)] float m_attackRate = 1.0f;
