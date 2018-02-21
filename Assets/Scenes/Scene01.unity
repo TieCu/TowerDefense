@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_rating: 1
   m_extraDataSlot: 1
   m_charge: 10
-  m_effect: 5
+  m_effect: 6
 --- !u!212 &1508608839
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1696,6 +1696,8 @@ MonoBehaviour:
   m_health: 100
   m_coins: 0
   m_maxPopulation: 1
+  projectileContainer: {fileID: 0}
+  towerContainer: {fileID: 0}
 --- !u!4 &2109605690 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4737928193629080, guid: 320f6e3181066f04ba6e9716ca3ed166,
