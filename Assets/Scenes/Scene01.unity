@@ -306,6 +306,39 @@ Transform:
   m_PrefabParentObject: {fileID: 4951657052966302, guid: 5706e2ae65f9e0341866cc4614e00405,
     type: 2}
   m_PrefabInternal: {fileID: 67776430}
+--- !u!1 &195690444 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1010812465022474, guid: 320f6e3181066f04ba6e9716ca3ed166,
+    type: 2}
+  m_PrefabInternal: {fileID: 1939679957}
+--- !u!114 &195690445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 195690444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b3ba15b8908e143a2a140607a8a85f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_texture: {fileID: 21300000, guid: 3b15e649bdd7fa345882df1e73f2b178, type: 3}
+--- !u!114 &195690446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 195690444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537a94a2e6088a44d9ee57d1bb1aca28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cost: 1
+  m_rating: 1
+  m_extraDataSlot: 0
+  m_charge: 10
+  m_effect: 1
 --- !u!1 &368299670
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +1005,7 @@ GameObject:
   - component: {fileID: 1508608838}
   - component: {fileID: 1508608841}
   m_Layer: 0
-  m_Name: explosion3
+  m_Name: Obsticle2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -990,11 +1023,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cost: 1
-  m_size: 1
-  m_rating: 100
-  m_extraDataSlot: 5
+  m_rating: 1
+  m_extraDataSlot: 1
   m_charge: 10
-  m_effect: 4
+  m_effect: 6
 --- !u!212 &1508608839
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1046,7 +1078,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1508608837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.06, y: -0.96, z: 0}
+  m_LocalPosition: {x: -5.94, y: -2.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1419,7 +1451,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1830948822}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3e2b8ca869e2f443a5cf1cba70e3830, type: 3}
   m_Name: 
@@ -1427,8 +1459,82 @@ MonoBehaviour:
   m_contribute: 0
   m_purpose: 1
   m_spawns: {fileID: 114601673418548590, guid: 56bb1dfc931880649ab80c0863ab27e2, type: 2}
-  m_spawnTime: 0.1
+  m_spawnTime: 0.5
   m_channel: 2
+--- !u!1001 &1939679957
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4737928193629080, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.57046056
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737928193629080, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.757777
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737928193629080, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.46563947
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737928193629080, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737928193629080, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737928193629080, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737928193629080, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737928193629080, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010812465022474, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+      propertyPath: m_Name
+      value: Obsticle3D
+      objectReference: {fileID: 0}
+    - target: {fileID: 114098497358509038, guid: 320f6e3181066f04ba6e9716ca3ed166,
+        type: 2}
+      propertyPath: m_texture
+      value: 
+      objectReference: {fileID: 21300000, guid: 374963bc01706274dae43f57cba957bb,
+        type: 3}
+    - target: {fileID: 114165171485239062, guid: 320f6e3181066f04ba6e9716ca3ed166,
+        type: 2}
+      propertyPath: m_texture
+      value: 
+      objectReference: {fileID: 21300000, guid: 70f1c7810df821a4c97954242a3f7a12,
+        type: 3}
+    - target: {fileID: 65197041949601476, guid: 320f6e3181066f04ba6e9716ca3ed166,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65197041949601476, guid: 320f6e3181066f04ba6e9716ca3ed166,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010812465022474, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114098497358509038, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+    - {fileID: 114165171485239062, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 320f6e3181066f04ba6e9716ca3ed166, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1962034715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,7 +1695,9 @@ MonoBehaviour:
   m_task: 0
   m_health: 100
   m_coins: 0
-  m_maxPopulation: 20
+  m_maxPopulation: 1
+  projectileContainer: {fileID: 0}
+  towerContainer: {fileID: 0}
 --- !u!4 &2109605690 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4737928193629080, guid: 320f6e3181066f04ba6e9716ca3ed166,

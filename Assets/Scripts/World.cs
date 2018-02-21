@@ -12,11 +12,16 @@ public class World : Singleton<World>
     [SerializeField] float m_coins;
 	[SerializeField] int m_maxPopulation;
 
+	
+    public GameObject projectileContainer;
+    public GameObject towerContainer;
 	[Header("Player Stats")]
 	[SerializeField] TextMeshProUGUI m_TxtLife = null;
 	[SerializeField] TextMeshProUGUI m_TxtMoney = null;
 
 	float m_timer = 0.0f;
+
+   
 
 	void Start()
 	{
@@ -73,7 +78,7 @@ public class World : Singleton<World>
         }
 		m_TxtMoney.text = "$" + m_coins.ToString();
 
-		return wasSuccessful;       
+		     
     }
 	
 }
