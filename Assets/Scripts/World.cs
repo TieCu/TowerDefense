@@ -30,6 +30,13 @@ public class World : Singleton<World>
 
 	}
 
+	public void NewLevel(int population, float health, float startBonus)
+	{
+		m_health = health;
+		m_maxPopulation = population;
+		m_coins += startBonus;
+	}
+
 	void Update()
 	{
 		m_timer += Time.deltaTime;
