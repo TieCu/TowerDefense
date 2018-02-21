@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
         Vector3 velocity = transform.rotation * (Vector3.forward * m_speed);
         transform.position = transform.position + (velocity * Time.deltaTime);
 
-        if(direction.magnitude <= .1f)
+        if(direction.magnitude <= .15f)
         {
             if (m_targetObject)
             {
@@ -40,14 +40,6 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.gameObject.tag == "Enemy")
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
 
     public void SetTarget(GameObject newTarget)
     {
