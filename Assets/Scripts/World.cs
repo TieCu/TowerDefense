@@ -116,5 +116,33 @@ public class World : Singleton<World>
 
 		return wasSuccessful;     
     }
-	
+
+    public GameObject GetNearestGameObject(GameObject sourceGameObject, string tag, float maxDistance = float.MaxValue)
+    {
+        GameObject nearest = null;
+
+        GameObject[] gameObjects;
+        gameObjects = GameObject.FindGameObjectsWithTag(tag);
+
+        if (gameObjects.Length > 0)
+        {
+            float nearestDistance = float.MaxValue;
+            for (int i = 0; i < gameObjects.Length; i++)
+            {
+                if (gameObjects[i] != sourceGameObject)
+                {
+                    float distance = (sourceGameObject.transform.position - gameObjects[i].transform.position).magnitude;
+                    if (distance < nearestDistance)
+                    {
+                        nearest = gameObjects[i];
+                        nearestDistance = distance;
+                    }
+                }
+            }
+
+            if (nearestDistance > maxDistance) nearest = null;
+        }
+
+        return nearest;
+    }
 }
