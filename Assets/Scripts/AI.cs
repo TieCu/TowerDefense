@@ -68,6 +68,21 @@ public class AI : MonoBehaviour
 					{
 						speed /= m_status[i].m_effectiveness;
 					}
+
+					print(speed);
+
+					//Status glue = m_status[i];
+					//glue.m_additionalData -= Time.deltaTime;
+					//m_status[i] = glue;
+
+					//if (m_status[i].m_additionalData <= 0.0f)
+					//{
+					//	if (m_status.Count != 1)
+					//	{
+					//		m_status.Remove(m_status[i]);
+					//	}
+					//}
+
 					break;
 				case 3: //Block
 					speed = 0;
@@ -109,13 +124,9 @@ public class AI : MonoBehaviour
 						speed /= weak.m_effectiveness;
 					}
 					weak.m_effectiveness -= Time.deltaTime;
-					if (weak.m_effectiveness > 0.0f && weak.m_effectiveness < 1.0f)
-					{
-						weak.m_effectiveness = 0.0f;
-					}
 					m_status[i] = weak;
 
-					if (m_status[i].m_additionalData <= 0.0f)
+					if (m_status[i].m_effectiveness <= 0.0f)
 					{
 						if (m_status.Count != 1)
 						{
