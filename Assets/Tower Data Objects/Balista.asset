@@ -16,6 +16,10 @@ MonoBehaviour:
   damage: 5
   attackRate: 0.33
   towerType: 0
+  towerStatus:
+    status: 1
+    statusDamage: 0
+    time: 0
   upgradeModifiers:
   - 1.5
   upgradeCosts:
