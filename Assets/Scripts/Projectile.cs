@@ -5,27 +5,58 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] [Range(.1f, 50.0f)] float m_speed = 1.0f;
-    GameObject m_target;
+
+    GameObject m_targetObject;
+    Vector3 m_targetVec;
+    float m_damage;
+    Status m_status;
         
     void Update()
     {
-        Vector3 direction = m_target.transform.position - transform.position;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction, Vector3.up), Time.deltaTime);
+        if (m_targetObject)
+        {
+            m_targetVec = m_targetObject.transform.position;
+        }        
+
+        Vector3 direction = m_targetVec - transform.position;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction, Vector3.up), 10.0f * Time.deltaTime);
 
         Vector3 velocity = transform.rotation * (Vector3.forward * m_speed);
         transform.position = transform.position + (velocity * Time.deltaTime);
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Enemy")
+        if(direction.magnitude <= .1f)
         {
+            if (m_targetObject)
+            {
+                AI ai = m_targetObject.GetComponent<AI>();
+                ai.Attacked(m_damage);
+
+                if (m_targetObject)
+                {
+                    ai.StatusChanged((int)m_status.status, m_status.statusDamage, m_status.time, true);
+                }
+            }
+            
             Destroy(gameObject);
         }
     }
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.gameObject.tag == "Enemy")
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
+
     public void SetTarget(GameObject newTarget)
     {
-        m_target = newTarget;
+        m_targetObject = newTarget;
+    }
+
+    public void SetDamage_Status(float damage, Status status)
+    {
+        m_damage = damage;
+        m_status = status;
     }
 }

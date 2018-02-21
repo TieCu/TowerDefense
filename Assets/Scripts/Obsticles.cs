@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Obsticles : MonoBehaviour
 {
-	public enum eEffect { NULL, DAMAGE, SLOW, BLOCK, FREEZE, BURN }
+	public enum eEffect { NULL, DAMAGE, SLOW, BLOCK, FREEZE, BURN, POSION }
 
 	[SerializeField] float m_cost = 1.0f;
 	[SerializeField] [Range(0.1f, 100.0f)] float m_rating = 1.0f;
@@ -25,6 +25,9 @@ public class Obsticles : MonoBehaviour
 				m_isDOT = true;
 				break;
 			case eEffect.BURN:
+				m_isDOT = true;
+				break;
+			case eEffect.POSION:
 				m_isDOT = true;
 				break;
 			default:
