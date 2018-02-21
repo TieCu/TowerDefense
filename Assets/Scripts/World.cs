@@ -8,9 +8,10 @@ public class World : Singleton<World>
 	enum eObjective { ESCAPE, DEFEND }
 
 	[SerializeField] eObjective m_task;
-	[SerializeField] float m_health;
-    [SerializeField] float m_coins;
-	[SerializeField] int m_maxPopulation;
+	[SerializeField] float[] m_healthRound;
+    [SerializeField] float[] m_coinsRound;
+	[SerializeField] float[] m_roundDelay;
+	[SerializeField] int[] m_maxPopulationRound;
 
 	
     public GameObject projectileContainer;
@@ -20,14 +21,17 @@ public class World : Singleton<World>
 	[SerializeField] TextMeshProUGUI m_TxtMoney = null;
 
 	float m_timer = 0.0f;
+	int m_roundIndex = 0;
+	float m_health;
+	float m_coins;
+	int m_maxPopulation;
+	bool m_isPaused = true;
 
-   
 
 	void Start()
 	{
 		m_TxtMoney.text = "$" + m_coins.ToString();
 		m_TxtLife.text = m_health.ToString();
-
 	}
 
 	public void NewLevel(int population, float health, float startBonus)
@@ -39,27 +43,52 @@ public class World : Singleton<World>
 
 	void Update()
 	{
-		m_timer += Time.deltaTime;
+		if (m_roundIndex < m_healthRound.Length && m_roundIndex < m_coinsRound.Length && m_roundIndex < m_maxPopulationRound.Length)
+		{
+			NewLevel(m_maxPopulationRound[m_roundIndex], m_healthRound[m_roundIndex], m_coinsRound[m_roundIndex]);
+		}
+
+		if (!m_isPaused)
+		{
+			m_timer += Time.deltaTime;
+		}
 
 		var spawners = FindObjectsOfType<Spawner>();
 
-		if(spawners != null)
+		if (spawners != null)
 		{
-			int currentPop = 0;
-
-			foreach (Spawner s in spawners)
+			if (m_isPaused)
 			{
-				currentPop += s.Population;
-			}
-
-			if(currentPop >= m_maxPopulation)
-			{
-				foreach (Spawner s in spawners)
+				foreach(Spawner s in spawners)
 				{
 					s.SpawnerOn = false;
 				}
 			}
+			else
+			{
+
+				int currentPop = 0;
+
+				foreach (Spawner s in spawners)
+				{
+					currentPop += s.Population;
+				}
+
+				if (currentPop >= m_maxPopulation)
+				{
+					foreach (Spawner s in spawners)
+					{
+						s.SpawnerOn = false;
+					}
+				}
+			}
 		}
+
+		if(m_timer >= m_roundDelay[m_roundIndex])
+		{
+			m_isPaused = false;
+			m_timer = 0.0f;
+		} 
 	}
 
 	public void Invaded(float value)

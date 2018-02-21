@@ -20,6 +20,7 @@ public class AI : MonoBehaviour
 	List<Status> m_status;
 	Vector2 m_direction;
 	int m_channel = 0;
+	bool isDead = false;
 
     public float Health { get { return m_health; } }
 	public float Value { get { return m_damage; } }
@@ -41,6 +42,7 @@ public class AI : MonoBehaviour
 	{
 		if (m_health <= 0.0f)
 		{
+			isDead = true;
 			Destroy(gameObject);
 		}
 
@@ -144,7 +146,7 @@ public class AI : MonoBehaviour
 	private void OnDestroy()
 	{
 		World world = FindObjectOfType<World>();
-		if (world)
+		if (world && isDead)
 		{
 			world.AddToCoins(m_value);
 		}
