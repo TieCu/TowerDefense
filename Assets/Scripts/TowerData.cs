@@ -11,11 +11,12 @@ public enum eStatus
     SLOW = 2
 }
 
+[System.Serializable]
 public struct Status
 {
-    internal eStatus status;
-    internal float statusDamage;
-    internal float time;
+    public eStatus status;
+    public float statusDamage;
+    public float time;
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "Data/Tower", order = 1)]
