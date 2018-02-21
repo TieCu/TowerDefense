@@ -11,7 +11,10 @@ public class World : Singleton<World>
     [SerializeField] float m_coins;
 	[SerializeField] int m_maxPopulation;
 
-	float m_timer = 0.0f;
+    public GameObject projectileContainer;
+    public GameObject towerContainer;
+
+    float m_timer = 0.0f;
 
 	void Start()
 	{

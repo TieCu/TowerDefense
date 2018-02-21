@@ -9,16 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad6606323812174d856c3e484792346, type: 3}
-  m_Name: Poison Tower
+  m_Name: Poison
   m_EditorClassIdentifier: 
   value: 0
-  attackRadius: 0
+  attackRadius: 1.5
   damage: 0
   attackRate: 0
-  towerType: 0
+  towerType: 5
   upgradeModifiers: []
   upgradeCosts: []
   towers: []
   emitter: {fileID: 0}
   projectile: {fileID: 0}
-  projectileContainer: {fileID: 0}

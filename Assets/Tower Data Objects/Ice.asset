@@ -15,10 +15,9 @@ MonoBehaviour:
   attackRadius: 0
   damage: 0
   attackRate: 0
-  towerType: 0
+  towerType: 2
   upgradeModifiers: []
   upgradeCosts: []
   towers: []
   emitter: {fileID: 0}
   projectile: {fileID: 0}
-  projectileContainer: {fileID: 0}

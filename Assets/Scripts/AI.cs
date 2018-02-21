@@ -21,6 +21,7 @@ public class AI : MonoBehaviour
 	Vector2 m_direction;
 	int m_channel = 0;
 
+    public float Health { get { return m_health; } }
 	public float Value { get { return m_damage; } }
 	public int Channel { get { return m_channel; } }
 
