@@ -117,16 +117,17 @@ public class AI : MonoBehaviour
 					}
 					break;
 				case 6: //Posion
-					Attacked(Time.deltaTime * m_status[i].m_additionalData);
+					Attacked(Time.deltaTime * m_status[i].m_effectiveness);
 					Status weak = m_status[i];
-					if (weak.m_effectiveness != 0)
+					if (weak.m_additionalData >= 1)
 					{
-						speed /= weak.m_effectiveness;
+						speed /= weak.m_additionalData;
+						print(speed);
 					}
-					weak.m_effectiveness -= Time.deltaTime;
+					weak.m_additionalData -= Time.deltaTime;
 					m_status[i] = weak;
 
-					if (m_status[i].m_effectiveness <= 0.0f)
+					if (m_status[i].m_additionalData <= 0.0f)
 					{
 						if (m_status.Count != 1)
 						{
