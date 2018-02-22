@@ -42,7 +42,6 @@ public class TowerData : ScriptableObject
     public float[] upgradeModifiers;
     public float[] upgradeCosts;
     public Sprite[] towers;
-
-    public GameObject emitter;
+    
     public Projectile projectile;
 }

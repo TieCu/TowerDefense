@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] [Range(.1f, 50.0f)] float m_speed = 1.0f;
-
+   
     GameObject m_targetObject;
     Vector3 m_targetVec;
     Status m_status;
@@ -15,15 +15,15 @@ public class Projectile : MonoBehaviour
         
     void Update()
     {
-        if (!m_targetObject)
+        //if (!m_targetObject)
+        //{
+        //    m_targetObject = World.Instance.GetNearestGameObject(gameObject, m_enemyTag, m_maxDistance);
+        //    m_targetVec = m_targetObject.transform.position;
+        //}
+        if (m_targetObject)
         {
-            m_targetObject = World.Instance.GetNearestGameObject(gameObject, m_enemyTag, m_maxDistance);
             m_targetVec = m_targetObject.transform.position;
         }
-        //if (m_targetObject)
-        //{
-        //    m_targetVec = m_targetObject.transform.position;
-        //}        
 
         Vector3 direction = m_targetVec - transform.position;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction, Vector3.up), 10.0f * Time.deltaTime);
