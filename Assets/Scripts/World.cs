@@ -98,6 +98,13 @@ public class World : Singleton<World>
 			}
 			else
 			{
+				if (m_timer <= .5)
+				{
+					foreach (Spawner s in spawners)
+					{
+						s.SpawnerOn = true;
+					}
+				}
 
 				int currentPop = 0;
 
