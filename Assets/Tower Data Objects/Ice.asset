@@ -11,18 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad6606323812174d856c3e484792346, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
-  value: 800
+  value: 400
   attackRadius: 4
-  damage: 3
-  attackRate: 0.1
+  damage: 5
+  attackRate: 0.5
   towerType: 2
   towerStatus:
     status: 4
     statusDamage: 1
-    time: 1
+    time: 2
   upgradeModifiers: []
   upgradeCosts: []
-  towers: []
-  emitter: {fileID: 1874797279382694, guid: 749abcd8ad33cdf459b0c141217177b5, type: 2}
+  towers:
+  - {fileID: 21300000, guid: c554df7eaa085944abad6adb0b192a43, type: 3}
+  - {fileID: 21300000, guid: 9559aed5416190249b6ca9a8a5c418ed, type: 3}
   projectile: {fileID: 114642131341648074, guid: 6a22c01e7beac5f4eb9b9572f0382686,
     type: 2}

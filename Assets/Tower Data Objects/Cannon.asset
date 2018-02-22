@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad6606323812174d856c3e484792346, type: 3}
   m_Name: Cannon
   m_EditorClassIdentifier: 
-  value: 300
-  attackRadius: 2.7
-  damage: 15
-  attackRate: 2
+  value: 100
+  attackRadius: 2.5
+  damage: 5
+  attackRate: 0.5
   towerType: 1
   towerStatus:
     status: 1
@@ -22,7 +22,8 @@ MonoBehaviour:
     time: 0
   upgradeModifiers: []
   upgradeCosts: []
-  towers: []
-  emitter: {fileID: 1995867484541670, guid: 7ea24e41a819282458c6cf6d5746b427, type: 2}
+  towers:
+  - {fileID: 21300000, guid: 188e00f402b25ae439a0f79ffec20199, type: 3}
+  - {fileID: 21300000, guid: 151bfa3227364ed408208d70236385d1, type: 3}
   projectile: {fileID: 114642131341648074, guid: 6a22c01e7beac5f4eb9b9572f0382686,
     type: 2}

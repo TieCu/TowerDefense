@@ -6,13 +6,14 @@ using TMPro;
 public class World : Singleton<World>
 {
 	enum eObjective { ESCAPE, DEFEND }
-
+    
+    [System.Serializable]
 	struct Round
 	{
-		internal float m_health;
-		internal float m_coins;
-		internal float m_delay;
-		internal int m_maxPopulation;
+		public float m_health;
+		public float m_coins;
+		public float m_delay;
+		public int m_maxPopulation;
 	}
 
 	[SerializeField] eObjective m_task;
@@ -76,7 +77,9 @@ public class World : Singleton<World>
 		{
 			m_isPaused = false;
 			m_timer = 0.0f;
-		} 
+		}
+
+        print(m_timer);
 	}
 
 	void UpdateSpawners()
