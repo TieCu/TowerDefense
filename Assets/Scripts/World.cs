@@ -7,26 +7,31 @@ public class World : Singleton<World>
 {
 	enum eObjective { ESCAPE, DEFEND }
 
-	[SerializeField] eObjective m_task;
-	[SerializeField] float[] m_healthRound;
-    [SerializeField] float[] m_coinsRound;
-	[SerializeField] float[] m_roundDelay;
-	[SerializeField] int[] m_maxPopulationRound;
+	struct Round
+	{
+		internal float m_health;
+		internal float m_coins;
+		internal float m_delay;
+		internal int m_maxPopulation;
+	}
 
-	
+	[SerializeField] eObjective m_task;
+	[SerializeField] Round[] m_rounds;
+
     public GameObject projectileContainer;
     public GameObject towerContainer;
-	int m_deadPopulation = 0;
+
 	[Header("Player Stats")]
 	[SerializeField] TextMeshProUGUI m_TxtLife = null;
 	[SerializeField] TextMeshProUGUI m_TxtMoney = null;
 
+	bool m_isPaused = false;
+	int m_deadPopulation = 0;
 	float m_timer = 0.0f;
 	int m_roundIndex = 0;
 	float m_health;
 	float m_coins;
 	int m_maxPopulation;
-	bool m_isPaused = false;
 
 
 	void Start()
@@ -46,31 +51,41 @@ public class World : Singleton<World>
 	{
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            m_isPaused = true;
+			Paused();
         }
 
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            m_isPaused = false;
-        }
-
-		if (m_roundIndex < m_healthRound.Length && m_roundIndex < m_coinsRound.Length && m_roundIndex < m_maxPopulationRound.Length)
+		if (m_roundIndex < m_rounds.Length)
 		{
-			NewLevel(m_maxPopulationRound[m_roundIndex], m_healthRound[m_roundIndex], m_coinsRound[m_roundIndex]);
+			NewLevel(m_rounds[m_roundIndex].m_maxPopulation, m_rounds[m_roundIndex].m_health, m_rounds[m_roundIndex].m_coins);
 		}
+
+		UpdateSpawners();
 
 		if (!m_isPaused)
 		{
 			m_timer += Time.deltaTime;
 		}
+		else if(m_isPaused && m_deadPopulation == 0)
+		{
+			m_isPaused = true;
+		}
 
+		if(m_timer >= m_rounds[m_roundIndex].m_delay)
+		{
+			m_isPaused = false;
+			m_timer = 0.0f;
+		} 
+	}
+
+	void UpdateSpawners()
+	{
 		var spawners = FindObjectsOfType<Spawner>();
 
 		if (spawners != null)
 		{
 			if (m_isPaused)
 			{
-				foreach(Spawner s in spawners)
+				foreach (Spawner s in spawners)
 				{
 					s.SpawnerOn = false;
 				}
@@ -94,12 +109,11 @@ public class World : Singleton<World>
 				}
 			}
 		}
+	}
 
-		if(m_timer >= m_roundDelay[m_roundIndex])
-		{
-			m_isPaused = false;
-			m_timer = 0.0f;
-		} 
+	public void Paused()
+	{
+		Time.timeScale = 0.0f;
 	}
 
 	public void Invaded(float value)
