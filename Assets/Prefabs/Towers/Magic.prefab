@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114995598760998950}
   - component: {fileID: 58892758525507746}
   m_Layer: 0
-  m_Name: TEST_Magic Tower
+  m_Name: Magic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: 6c4a594f77d4516488005d5dd2979779, type: 2}
+  m_emitter: {fileID: 0}
 --- !u!212 &212279194755538124
 SpriteRenderer:
   m_ObjectHideFlags: 1

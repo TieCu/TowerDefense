@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114923364706131902}
   - component: {fileID: 58189193851666210}
   m_Layer: 0
-  m_Name: TEST_Cannon Tower
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: 83d2b1db381aee7429de37f0cc59f560, type: 2}
+  m_emitter: {fileID: 0}
 --- !u!212 &212929952240394580
 SpriteRenderer:
   m_ObjectHideFlags: 1

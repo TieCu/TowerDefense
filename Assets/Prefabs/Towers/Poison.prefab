@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114024273575526796}
   - component: {fileID: 58223174358118746}
   m_Layer: 0
-  m_Name: TEST_Poison Tower
+  m_Name: Poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: 4d6cc01fb7ec46742bdd9f9ccce0b7a7, type: 2}
+  m_emitter: {fileID: 0}
 --- !u!212 &212370885156003324
 SpriteRenderer:
   m_ObjectHideFlags: 1
