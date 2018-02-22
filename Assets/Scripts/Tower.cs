@@ -5,7 +5,9 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] TowerData m_data;
- 
+
+    GameObject m_emitter;
+
     public float value { get { return m_data.value; } }
     public float attackRadius { get { return m_data.attackRadius; } }
     public float damage { get { return m_data.damage; } }
@@ -21,6 +23,10 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
+        m_emitter = gameObject.GetComponentInChildren<GameObject>();
+
+        print(m_emitter.transform.position.x + ", " + m_emitter.transform.position.y + ", " + m_emitter.transform.position.z);
+
         m_attackTimer = m_data.attackRate;
 
 		CircleCollider2D circle = gameObject.GetComponent<CircleCollider2D>();

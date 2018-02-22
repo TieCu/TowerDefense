@@ -25,7 +25,7 @@ public class World : Singleton<World>
 	float m_health;
 	float m_coins;
 	int m_maxPopulation;
-	bool m_isPaused = true;
+	bool m_isPaused = false;
 
 
 	void Start()
@@ -43,6 +43,16 @@ public class World : Singleton<World>
 
 	void Update()
 	{
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            m_isPaused = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            m_isPaused = false;
+        }
+
 		if (m_roundIndex < m_healthRound.Length && m_roundIndex < m_coinsRound.Length && m_roundIndex < m_maxPopulationRound.Length)
 		{
 			NewLevel(m_maxPopulationRound[m_roundIndex], m_healthRound[m_roundIndex], m_coinsRound[m_roundIndex]);

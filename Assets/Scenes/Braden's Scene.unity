@@ -1210,11 +1210,23 @@ MonoBehaviour:
   m_task: 1
   m_healthRound:
   - 100
+  - 100
+  - 100
+  - 100
+  - 100
   m_coinsRound:
+  - 40
+  - 40
+  - 40
+  - 40
   - 40
   m_roundDelay:
   - 4
-  m_maxPopulationRound: 0a000000
+  - 4
+  - 4
+  - 4
+  - 4
+  m_maxPopulationRound: 1e0000001e0000001e0000001e0000001e000000
   projectileContainer: {fileID: 1001713804}
   towerContainer: {fileID: 1096373717}
   m_TxtLife: {fileID: 1164852396}

@@ -18,6 +18,7 @@ public class Projectile : MonoBehaviour
         if (!m_targetObject)
         {
             m_targetObject = World.Instance.GetNearestGameObject(gameObject, m_enemyTag, m_maxDistance);
+            m_targetVec = m_targetObject.transform.position;
         }
         //if (m_targetObject)
         //{
