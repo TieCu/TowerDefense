@@ -17,6 +17,7 @@ public class AI : MonoBehaviour
 	[SerializeField] float m_value = 1.0f;
 	[SerializeField] float m_damage = 1.0f;
 
+    Animator m_animator;
 	List<Status> m_status;
 	Vector2 m_direction;
 	int m_channel = 0;
@@ -29,7 +30,7 @@ public class AI : MonoBehaviour
 	private void Start()
 	{
 		m_direction = Vector2.zero;
-
+        m_animator = GetComponent<Animator>();
 		m_status = new List<Status>();
 
 		Status start = new Status();
@@ -249,6 +250,8 @@ public class AI : MonoBehaviour
 	{
 		if (damage > 0) {
 			m_health -= damage;
+
+            m_animator.SetTrigger("Hit");
 		}
 	}
 }
