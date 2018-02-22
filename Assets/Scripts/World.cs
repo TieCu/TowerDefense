@@ -106,7 +106,13 @@ public class World : Singleton<World>
 				{
 					foreach (Spawner s in spawners)
 					{
-						s.SpawnerOn = true;
+						foreach(int i in s.OnRounds)
+						{
+							if (i == m_roundIndex)
+							{
+								s.SpawnerOn = true;
+							}
+						}
 					}
 				}
 

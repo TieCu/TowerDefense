@@ -12284,7 +12284,7 @@ GameObject:
   - component: {fileID: 749717223}
   - component: {fileID: 749717222}
   m_Layer: 0
-  m_Name: crateMetal
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -27,7 +27,7 @@ public class AI : MonoBehaviour
 	public float Value { get { return m_damage; } }
 	public int Channel { get { return m_channel; } }
 
-	private void Start()
+	virtual protected void Start()
 	{
 		m_direction = Vector2.zero;
         m_animator = GetComponent<Animator>();

@@ -11,5 +11,12 @@ public class BossAI : AI
 		Vector3 velocity = Vector3.right;
 		velocity = velocity * m_speed * Time.deltaTime;
 		transform.position = transform.position + velocity;
+
+		CheckBorder();
+	}
+
+	void CheckBorder()
+	{
+		
 	}
 }
