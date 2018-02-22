@@ -40,12 +40,12 @@ public class AI : MonoBehaviour
 
 	void Update()
 	{
-		if (m_health <= 0.0f)
-		{
-			isDead = true;
-			Destroy(gameObject);
-		}
+		UpdateHealth();
+		UpdateMovement();
+	}
 
+	void UpdateMovement()
+	{
 		float speed = m_speed;
 		StatusEffect(ref speed);
 
@@ -54,6 +54,15 @@ public class AI : MonoBehaviour
 		velocity.y = m_direction.y;
 
 		transform.position = transform.position + (velocity * Time.deltaTime * speed);
+	}
+
+	void UpdateHealth()
+	{
+		if (m_health <= 0.0f)
+		{
+			isDead = true;
+			Destroy(gameObject);
+		}
 	}
 
 	private void StatusEffect(ref float speed)
