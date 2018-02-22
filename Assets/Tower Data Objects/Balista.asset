@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad6606323812174d856c3e484792346, type: 3}
   m_Name: Balista
   m_EditorClassIdentifier: 
-  value: 100
-  attackRadius: 2.4
-  damage: 5
-  attackRate: 0.33
+  value: 250
+  attackRadius: 2.7
+  damage: 15
+  attackRate: 1.5
   towerType: 0
   towerStatus:
     status: 1
@@ -24,7 +24,8 @@ MonoBehaviour:
   - 1.5
   upgradeCosts:
   - 200
-  towers: []
-  emitter: {fileID: 1731385981730126, guid: 38ab93b31b3dc114cb0062380129ce75, type: 2}
+  towers:
+  - {fileID: 21300000, guid: 4dbeaece6a77a274487503b7be56dfe2, type: 3}
+  - {fileID: 21300000, guid: 6c7fe3022fbbb2a4fa3aea19e7fcd448, type: 3}
   projectile: {fileID: 114642131341648074, guid: 6a22c01e7beac5f4eb9b9572f0382686,
     type: 2}
