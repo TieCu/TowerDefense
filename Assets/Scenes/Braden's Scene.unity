@@ -231,7 +231,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4892025597514342, guid: 6a22c01e7beac5f4eb9b9572f0382686, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1107977554773732, guid: 6a22c01e7beac5f4eb9b9572f0382686, type: 2}
       propertyPath: m_IsActive
@@ -305,14 +305,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &324124753
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1096373718}
     m_Modifications:
     - target: {fileID: 4278610977420852, guid: 38ab93b31b3dc114cb0062380129ce75, type: 2}
       propertyPath: m_LocalPosition.x
@@ -324,19 +324,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4278610977420852, guid: 38ab93b31b3dc114cb0062380129ce75, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4278610977420852, guid: 38ab93b31b3dc114cb0062380129ce75, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4278610977420852, guid: 38ab93b31b3dc114cb0062380129ce75, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4278610977420852, guid: 38ab93b31b3dc114cb0062380129ce75, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4278610977420852, guid: 38ab93b31b3dc114cb0062380129ce75, type: 2}
       propertyPath: m_LocalRotation.w
@@ -344,7 +344,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4278610977420852, guid: 38ab93b31b3dc114cb0062380129ce75, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232577786819932, guid: 38ab93b31b3dc114cb0062380129ce75, type: 2}
+      propertyPath: m_Name
+      value: TEST_Balista Tower 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 38ab93b31b3dc114cb0062380129ce75, type: 2}
@@ -386,7 +390,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4951657052966302, guid: 5706e2ae65f9e0341866cc4614e00405, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114190891573032220, guid: 5706e2ae65f9e0341866cc4614e00405,
         type: 2}
@@ -484,7 +488,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1058480153
 GameObject:
@@ -670,8 +674,9 @@ Transform:
   - {fileID: 1874629057}
   - {fileID: 2021443016}
   - {fileID: 1203285123}
+  - {fileID: 1322709724}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1164852394
 GameObject:
@@ -831,6 +836,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4416123038276834, guid: 749abcd8ad33cdf459b0c141217177b5,
     type: 2}
   m_PrefabInternal: {fileID: 1671740566}
+--- !u!4 &1322709724 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4278610977420852, guid: 38ab93b31b3dc114cb0062380129ce75,
+    type: 2}
+  m_PrefabInternal: {fileID: 324124753}
 --- !u!1 &1405933251
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +929,7 @@ RectTransform:
   - {fileID: 1164852395}
   - {fileID: 1058480154}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1215,7 +1225,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2021443016 stripped
 Transform:
@@ -1284,5 +1294,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

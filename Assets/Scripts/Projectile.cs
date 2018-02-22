@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     Vector3 m_targetVec;
     Status m_status;
     float m_damage;
-    float m_maxDistance;
+    float m_maxDistance = 5.0f;
     string m_enemyTag = "Enemy";
         
     void Update()
@@ -22,6 +22,11 @@ public class Projectile : MonoBehaviour
         //}
         if (m_targetObject)
         {
+            m_targetVec = m_targetObject.transform.position;
+        }
+        else
+        {
+            m_targetObject = World.Instance.GetNearestGameObject(gameObject, m_enemyTag, m_maxDistance);
             m_targetVec = m_targetObject.transform.position;
         }
 
