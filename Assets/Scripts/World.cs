@@ -69,6 +69,7 @@ public class World : Singleton<World>
 		else if(!m_isPaused && m_deadPopulation == 0 && m_populationMaxed)
 		{
 			m_isPaused = true;
+			m_roundIndex++;
 		}
 
 		if(m_timer >= m_rounds[m_roundIndex].m_delay)
