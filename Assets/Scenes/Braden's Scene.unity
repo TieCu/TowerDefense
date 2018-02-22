@@ -233,6 +233,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1057146771735402, guid: 633e61917ed4a8b4091e0388bd341ba0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 633e61917ed4a8b4091e0388bd341ba0, type: 2}
   m_IsPrefabParent: 0
@@ -759,6 +763,10 @@ Prefab:
       propertyPath: m_damage
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1102780890997866, guid: 48d4f0351eb40f44ca5c64be3383b045, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48d4f0351eb40f44ca5c64be3383b045, type: 2}
   m_IsPrefabParent: 0
@@ -963,6 +971,10 @@ Prefab:
     - target: {fileID: 4626912670174214, guid: 7ae11e20b35d465428399b6a3defb016, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250483762224904, guid: 7ae11e20b35d465428399b6a3defb016, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ae11e20b35d465428399b6a3defb016, type: 2}
@@ -1360,6 +1372,10 @@ Prefab:
       propertyPath: m_health
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1250483762224904, guid: d3b409756adae954bb88f6417b581768, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3b409756adae954bb88f6417b581768, type: 2}
   m_IsPrefabParent: 0
@@ -1478,12 +1494,12 @@ MonoBehaviour:
   m_rounds:
   - m_health: 10
     m_coins: 200
-    m_delay: 3
+    m_delay: 12
     m_maxPopulation: 10
-  - m_health: 0
-    m_coins: 0
-    m_delay: 0
-    m_maxPopulation: 0
+  - m_health: 10
+    m_coins: 300
+    m_delay: 3
+    m_maxPopulation: 20
   - m_health: 0
     m_coins: 0
     m_delay: 0
