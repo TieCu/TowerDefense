@@ -21,6 +21,7 @@ public class PathPiece : TilePiece
 	private void Start()
 	{
 		m_spawnTimer = m_spawnTime;
+		Occupied = true;
 	}
 
 	void Update()
