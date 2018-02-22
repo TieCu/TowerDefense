@@ -26,6 +26,7 @@ public class World : Singleton<World>
 	[SerializeField] TextMeshProUGUI m_TxtMoney = null;
 
 	bool m_isPaused = false;
+	bool m_populationMaxed = false;
 	int m_deadPopulation = 0;
 	float m_timer = 0.0f;
 	int m_roundIndex = 0;
@@ -65,7 +66,7 @@ public class World : Singleton<World>
 		{
 			m_timer += Time.deltaTime;
 		}
-		else if(m_isPaused && m_deadPopulation == 0)
+		else if(m_isPaused && m_deadPopulation == 0 && m_populationMaxed)
 		{
 			m_isPaused = true;
 		}
@@ -85,6 +86,7 @@ public class World : Singleton<World>
 		{
 			if (m_isPaused)
 			{
+				m_populationMaxed = false;
 				foreach (Spawner s in spawners)
 				{
 					s.SpawnerOn = false;
@@ -102,6 +104,7 @@ public class World : Singleton<World>
 
 				if (currentPop >= m_maxPopulation)
 				{
+					m_populationMaxed = true;
 					foreach (Spawner s in spawners)
 					{
 						s.SpawnerOn = false;
