@@ -66,7 +66,7 @@ public class World : Singleton<World>
 		{
 			m_timer += Time.deltaTime;
 		}
-		else if(m_isPaused && m_deadPopulation == 0 && m_populationMaxed)
+		else if(!m_isPaused && m_deadPopulation == 0 && m_populationMaxed)
 		{
 			m_isPaused = true;
 		}
