@@ -54,6 +54,12 @@ public class PathPiece : TilePiece
 		}
 	}
 
+	private void GameOver(bool winLose)
+	{
+		//Ending screen
+		Time.timeScale = 0.0f;
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		AI ai = collision.GetComponent<AI>();
