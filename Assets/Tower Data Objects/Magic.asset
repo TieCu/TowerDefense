@@ -11,20 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad6606323812174d856c3e484792346, type: 3}
   m_Name: Magic
   m_EditorClassIdentifier: 
-  value: 500
-  attackRadius: 2.1
-  damage: 1
-  attackRate: 0.1
+  value: 350
+  attackRadius: 2.4
+  damage: 3
+  attackRate: 0.33
   towerType: 4
   towerStatus:
     status: 6
-    statusDamage: 10
+    statusDamage: 0
     time: 3
   upgradeModifiers: []
   upgradeCosts: []
   towers:
   - {fileID: 21300000, guid: d23cfa072cff22d47a25f0ca14230b0f, type: 3}
   - {fileID: 21300000, guid: 52ff7e479c252ce4e9d3e5f6bf0fa3a2, type: 3}
-  emitter: {fileID: 1840767719529588, guid: 89ee114b81756e04e87d4d8b76f14833, type: 2}
   projectile: {fileID: 114642131341648074, guid: 6a22c01e7beac5f4eb9b9572f0382686,
     type: 2}

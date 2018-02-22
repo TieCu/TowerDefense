@@ -15,11 +15,6 @@ public class Projectile : MonoBehaviour
         
     void Update()
     {
-        //if (!m_targetObject)
-        //{
-        //    m_targetObject = World.Instance.GetNearestGameObject(gameObject, m_enemyTag, m_maxDistance);
-        //    m_targetVec = m_targetObject.transform.position;
-        //}
         if (m_targetObject)
         {
             m_targetVec = m_targetObject.transform.position;
@@ -40,7 +35,7 @@ public class Projectile : MonoBehaviour
         Vector3 velocity = transform.rotation * (Vector3.forward * m_speed);
         transform.position = transform.position + (velocity * Time.deltaTime);
 
-        if (direction.magnitude <= .15f)
+        if (direction.magnitude <= .2f)
         {
             if (m_targetObject)
             {

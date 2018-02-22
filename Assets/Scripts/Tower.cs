@@ -23,8 +23,6 @@ public class Tower : MonoBehaviour
 
     void Start()
     { 
-        print(m_emitter.transform.position.x + ", " + m_emitter.transform.position.y + ", " + m_emitter.transform.position.z);
-
         m_attackTimer = m_data.attackRate;
 
 		CircleCollider2D circle = gameObject.GetComponent<CircleCollider2D>();

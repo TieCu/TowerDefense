@@ -134,7 +134,6 @@ public class AI : MonoBehaviour
 					if (weak.m_additionalData >= 1)
 					{
 						speed /= weak.m_additionalData;
-						print(speed);
 					}
 					weak.m_additionalData -= Time.deltaTime;
 					m_status[i] = weak;

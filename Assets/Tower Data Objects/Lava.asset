@@ -11,18 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad6606323812174d856c3e484792346, type: 3}
   m_Name: Lava
   m_EditorClassIdentifier: 
-  value: 500
-  attackRadius: 2.5
-  damage: 8
-  attackRate: 3
+  value: 600
+  attackRadius: 3
+  damage: 30
+  attackRate: 1
   towerType: 3
   towerStatus:
     status: 5
-    statusDamage: 3
-    time: 2
+    statusDamage: 10
+    time: 3
   upgradeModifiers: []
   upgradeCosts: []
-  towers: []
-  emitter: {fileID: 1233502731633706, guid: f4df45fc57a7d2b418984beb0958e50d, type: 2}
+  towers:
+  - {fileID: 21300000, guid: 68841a1fd688abe409570b6c9378375e, type: 3}
+  - {fileID: 21300000, guid: 1ee298e521812124b8cb812af5768cf9, type: 3}
   projectile: {fileID: 114642131341648074, guid: 6a22c01e7beac5f4eb9b9572f0382686,
     type: 2}
