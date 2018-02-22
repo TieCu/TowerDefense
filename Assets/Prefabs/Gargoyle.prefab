@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_health: 10
-  m_speed: 1
+  m_speed: 3
   m_value: 1
   m_damage: 1
 --- !u!212 &212520384501142266
