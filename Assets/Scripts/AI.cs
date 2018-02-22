@@ -13,7 +13,7 @@ public class AI : MonoBehaviour
 	}
 
 	[SerializeField] float m_health = 10.0f;
-	[SerializeField] float m_speed = 1.0f;
+	[SerializeField] protected float m_speed = 1.0f;
 	[SerializeField] float m_value = 1.0f;
 	[SerializeField] float m_damage = 1.0f;
 
@@ -45,7 +45,7 @@ public class AI : MonoBehaviour
 		UpdateMovement();
 	}
 
-	void UpdateMovement()
+	virtual protected void UpdateMovement()
 	{
 		float speed = m_speed;
 		StatusEffect(ref speed);
@@ -57,7 +57,7 @@ public class AI : MonoBehaviour
 		transform.position = transform.position + (velocity * Time.deltaTime * speed);
 	}
 
-	void UpdateHealth()
+	virtual protected void UpdateHealth()
 	{
 		if (m_health <= 0.0f)
 		{

@@ -40,6 +40,11 @@ public class World : Singleton<World>
 	{
 		m_TxtMoney.text = "$" + m_coins.ToString();
 		m_TxtLife.text = m_health.ToString();
+
+		if (m_roundIndex < m_rounds.Length)
+		{
+			NewLevel(m_rounds[m_roundIndex].m_maxPopulation, m_rounds[m_roundIndex].m_health, m_rounds[m_roundIndex].m_coins);
+		}
 	}
 
 	public void NewLevel(int population, float health, float startBonus)
@@ -56,11 +61,6 @@ public class World : Singleton<World>
 			Paused();
         }
 
-		if (m_roundIndex < m_rounds.Length)
-		{
-			NewLevel(m_rounds[m_roundIndex].m_maxPopulation, m_rounds[m_roundIndex].m_health, m_rounds[m_roundIndex].m_coins);
-		}
-
 		UpdateSpawners();
 
 		if (!m_isPaused)
@@ -71,16 +71,19 @@ public class World : Singleton<World>
 		{
 			m_isPaused = true;
 			m_roundIndex++;
+			if (m_roundIndex < m_rounds.Length)
+			{
+				NewLevel(m_rounds[m_roundIndex].m_maxPopulation, m_rounds[m_roundIndex].m_health, m_rounds[m_roundIndex].m_coins);
+			}
 		}
 
-		if(m_timer >= m_rounds[m_roundIndex].m_delay)
+		if (m_timer >= m_rounds[m_roundIndex].m_delay)
 		{
 			m_isPaused = false;
 			m_timer = 0.0f;
 		}
 
-        print("Wave " + m_roundIndex);
-        print(m_timer);
+        print("Wave " + m_roundIndex + ", " + m_health + " health, " + m_coins + " coins, " + m_deadPopulation + " dead");
 	}
 
 	void UpdateSpawners()
@@ -139,7 +142,7 @@ public class World : Singleton<World>
 
     public void AddToCoins(float newCoins)
     {
-        m_coins += newCoins;
+		m_coins += newCoins;
 		m_TxtMoney.text = "$" + m_coins.ToString();
     }
 
