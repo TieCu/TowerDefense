@@ -158,6 +158,7 @@ public class AI : MonoBehaviour
 		if (world && isDead)
 		{
 			world.AddToCoins(m_value);
+			world.DeadNow();
 		}
 	}
 

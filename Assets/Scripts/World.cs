@@ -16,6 +16,7 @@ public class World : Singleton<World>
 	
     public GameObject projectileContainer;
     public GameObject towerContainer;
+	int m_deadPopulation = 0;
 	[Header("Player Stats")]
 	[SerializeField] TextMeshProUGUI m_TxtLife = null;
 	[SerializeField] TextMeshProUGUI m_TxtMoney = null;
@@ -112,6 +113,11 @@ public class World : Singleton<World>
         m_coins += newCoins;
 		m_TxtMoney.text = "$" + m_coins.ToString();
     }
+
+	public void DeadNow()
+	{
+		m_deadPopulation++;
+	}
 
     public bool RemoveCoins(float cost)
     {
