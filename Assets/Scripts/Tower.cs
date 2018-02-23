@@ -155,8 +155,7 @@ public class Tower : MonoBehaviour
                 m_value = m_tower2Data.value;
                 m_towerIndex++;
             }
-
-            if (m_towerIndex == 1)
+            else if (m_towerIndex == 1)
             {
                 m_spriteRenderer.sprite = m_tower3Data.sprite;
                 m_damage *= m_tower3Data.damage;
