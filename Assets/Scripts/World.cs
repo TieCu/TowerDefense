@@ -45,6 +45,8 @@ public class World : Singleton<World>
 	int m_deadPopulation = 0;
 	float m_timer = 0.0f;
 	int m_roundIndex = 0;
+
+    public int RoundIndex { get { return m_roundIndex; } }
 	float m_health;
 	float m_coins;
 	int m_maxPopulation;
