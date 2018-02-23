@@ -12,7 +12,7 @@ public class AI : MonoBehaviour
 		internal float m_additionalData; //extra dot
 	}
 
-	[SerializeField] float m_health = 10.0f;
+	public float m_health = 10.0f;
 	[SerializeField] protected float m_speed = 1.0f;
 	[SerializeField] float m_value = 1.0f;
 	[SerializeField] float m_damage = 1.0f;

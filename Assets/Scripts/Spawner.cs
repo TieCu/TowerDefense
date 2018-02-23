@@ -28,9 +28,12 @@ public class Spawner : MonoBehaviour
 	public GameObject Spawn(GameObject go)
 	{
 		GameObject copy = null;
+        AI ai = null;
 		if (Bin)
 		{
 			copy = Instantiate(go, transform.position + (Vector3.back / 2), Quaternion.identity, Bin);
+            ai = copy.GetComponent<AI>();
+            ai.m_health *= (World.Instance.RoundIndex + 1);
 		}
 		else
 		{
