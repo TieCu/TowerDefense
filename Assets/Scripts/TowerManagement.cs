@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TowerManagement : MonoBehaviour
-{
+public class TowerManagement : MonoBehaviour {
 
 	private bool isSelling = false;
 	private bool isUpgrading = false;
@@ -19,22 +18,19 @@ public class TowerManagement : MonoBehaviour
 	private Color m_actualColor;
 
 	[Header("Highlighting Colors")]
-	[SerializeField]
-	Color m_buyingColor;
+	[SerializeField] Color m_buyingColor;
 	[SerializeField] Color m_sellingColor;
 	[SerializeField] Color m_upgradingColor;
 
 
 	// Use this for initialization
-	void Start()
-	{
+	void Start () {
 		m_costPanel.SetActive(false);
 	}
-
+	
 	// Update is called once per frame
-	void Update()
-	{
-
+	void Update () {
+		
 
 
 		//Selling code
@@ -54,7 +50,7 @@ public class TowerManagement : MonoBehaviour
 					}
 					else
 					{
-						m_TxtCost.text = ((int)hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().value * .75f).ToString();
+						m_TxtCost.text = "Sell Value: " + ((int)hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().value * .75f).ToString();
 						//selection highlighting code
 						if (m_priorTile == null) m_priorTile = m_currentTile;
 						Renderer temp = hit.transform.gameObject.GetComponent<Renderer>();
@@ -81,13 +77,15 @@ public class TowerManagement : MonoBehaviour
 				}
 
 			}
-			else m_costPanel.SetActive(false);
+				else m_costPanel.SetActive(false);
 
 		}
 
 		//Buying code
 		if (m_tower != null)
 		{
+			m_costPanel.SetActive(true);
+			m_TxtCost.text = "Cost: " + m_tower.GetComponent<Tower>().value.ToString();
 			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10, m_placeable);
 			if (hit.collider != null)
 			{
@@ -115,11 +113,14 @@ public class TowerManagement : MonoBehaviour
 					//Tower Placement Code
 					if (Input.GetMouseButtonDown(0))
 					{
-						Vector3 pos = hit.collider.transform.position + new Vector3(0.0f, 0.5f, 0.0f);
-						if ()
-						{
-							GameObject tow = Instantiate(m_tower, pos, Quaternion.identity);
+						//Implement Buy code here
 
+						bool iCanBuy = World.Instance.RemoveCoins(m_tower.GetComponent<Tower>().value);
+
+						if (iCanBuy)
+						{
+							Vector3 pos = hit.collider.transform.position + new Vector3(0.0f, 0.5f, 0.0f);
+							GameObject tow = Instantiate(m_tower, pos, Quaternion.identity);
 
 							hit.collider.gameObject.GetComponent<TilePiece>().Tower = tow;
 							m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
@@ -154,19 +155,27 @@ public class TowerManagement : MonoBehaviour
 						m_priorTile = m_currentTile;
 
 						//check if this tile is fully upgraded, if it is then revert it back to its normal color
-						m_currTileColor = Color.Lerp(m_actualColor, m_upgradingColor, 0.5f);
-						temp.material.color = m_currTileColor;
+						if(!hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().fullyUpgraded)
+						{
+							m_costPanel.SetActive(true);
+							m_TxtCost.text = "Cost: ";//it still needs to be implemented here;
+							m_currTileColor = Color.Lerp(m_actualColor, m_upgradingColor, 0.5f);
+							temp.material.color = m_currTileColor;
+
+						}
 					}
 					//Tower Upgrade Code
 					if (Input.GetMouseButtonDown(0))
 					{
 						//upgrade the tower and subtract the gold from the player here
 						hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().UpgradeTower();
-
-
-						//check if this tile is fully upgraded, if it is then revert it back to its normal color
-						//m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
-					}
+						if (hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().fullyUpgraded)
+						{
+							m_costPanel.SetActive(false);
+						}
+							//check if this tile is fully upgraded, if it is then revert it back to its normal color
+							//m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
+						}
 
 				}
 			}
@@ -182,7 +191,11 @@ public class TowerManagement : MonoBehaviour
 		isUpgrading = !isUpgrading;
 		isSelling = false;
 		m_tower = null;
-		if (isUpgrading == false) m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
+		if (isUpgrading == false)
+		{
+			m_costPanel.SetActive(false);
+			m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
+		}
 
 	}
 	public void SellTower()
@@ -190,7 +203,11 @@ public class TowerManagement : MonoBehaviour
 		isSelling = !isSelling;
 		isUpgrading = false;
 		m_tower = null;
-		if (isSelling) m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
+		if (isSelling == false)
+		{
+			m_costPanel.SetActive(false);
+			m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
+		}
 
 	}
 
@@ -200,6 +217,7 @@ public class TowerManagement : MonoBehaviour
 		if (m_tower != null)
 		{
 			m_tower = null;
+			m_costPanel.SetActive(false);
 			m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
 		}
 		else
