@@ -135,8 +135,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 9090687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.62, y: 2.08, z: -0.46563947}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.3908, y: 2.118, z: -0.46563947}
+  m_LocalScale: {x: 0.9419129, y: 1.0182843, z: 1.0182843}
   m_Children:
   - {fileID: 184966907}
   - {fileID: 1695159367}
@@ -18330,8 +18330,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 879664595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.2798967, y: 4.035249, z: -0.6725112}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.9543, y: 4.109, z: -0.67629}
+  m_LocalScale: {x: 0.9419129, y: 1.0182843, z: 1.0182843}
   m_Children:
   - {fileID: 646794463}
   - {fileID: 486697182}
@@ -42473,7 +42473,34 @@ MonoBehaviour:
   m_rounds:
   - m_health: 1
     m_coins: 1000
-    m_maxPopulation: 10
+    m_maxPopulation: 20
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 20
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 20
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 20
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 20
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 20
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 20
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 20
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 20
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 1
   m_projectileContainer: {fileID: 1800301368}
   m_towerContainer: {fileID: 1402899483}
   m_AIContainer: {fileID: 597674639}
