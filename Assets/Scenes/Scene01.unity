@@ -41598,13 +41598,13 @@ MonoBehaviour:
   towerContainer: {fileID: 1164073742}
   m_TxtLife: {fileID: 1625475070}
   m_TxtMoney: {fileID: 1625475069}
-  m_endRound1: {fileID: 0}
-  m_endRound2: {fileID: 0}
-  m_endRound3: {fileID: 0}
-  m_endRound7: {fileID: 0}
-  m_endRound9: {fileID: 0}
-  m_win: {fileID: 0}
-  m_lose: {fileID: 0}
+  m_endRound1: {fileID: 1766924531}
+  m_endRound2: {fileID: 171941840}
+  m_endRound3: {fileID: 948826911}
+  m_endRound7: {fileID: 142152656}
+  m_endRound9: {fileID: 364717607}
+  m_win: {fileID: 1471646370}
+  m_lose: {fileID: 66920169}
 --- !u!114 &2106553464
 MonoBehaviour:
   m_ObjectHideFlags: 0
