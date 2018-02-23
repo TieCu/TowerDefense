@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TowerManagement : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class TowerManagement : MonoBehaviour {
 
 	[SerializeField] GameObject m_tower = null;
 	[SerializeField] LayerMask m_placeable;
+	[SerializeField] TextMeshProUGUI m_TxtCost = null;
+	[SerializeField] GameObject m_costPanel = null;
 	private TilePiece m_currentTile = null;
 	private TilePiece m_priorTile = null;
 	private Color m_currTileColor;
@@ -22,7 +25,7 @@ public class TowerManagement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		m_costPanel.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -36,8 +39,10 @@ public class TowerManagement : MonoBehaviour {
 			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10, m_placeable);
 			if (hit.collider != null)
 			{
+
 				if (hit.collider.gameObject.GetComponent<TilePiece>().Occupied == true)
 				{
+					m_costPanel.SetActive(true);
 					m_currentTile = hit.collider.gameObject.GetComponent<TilePiece>();
 					if (m_priorTile == m_currentTile)
 					{
@@ -45,6 +50,7 @@ public class TowerManagement : MonoBehaviour {
 					}
 					else
 					{
+						m_TxtCost.text = ((int)hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().value * .75f).ToString();
 						//selection highlighting code
 						if (m_priorTile == null) m_priorTile = m_currentTile;
 						Renderer temp = hit.transform.gameObject.GetComponent<Renderer>();
@@ -57,16 +63,21 @@ public class TowerManagement : MonoBehaviour {
 					//Tower Removal Code
 					if (Input.GetMouseButtonDown(0))
 					{
-                        //give money back to the player here from the tower first
-                        hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().SellTower();
+						//give money back to the player here from the tower first
+						hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().SellTower();
 
 						Destroy(hit.collider.gameObject.GetComponent<TilePiece>().Tower);
 						hit.collider.gameObject.GetComponent<TilePiece>().Tower = null;
 						m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
+						m_costPanel.SetActive(false);
+
 					}
 
+
 				}
+
 			}
+				else m_costPanel.SetActive(false);
 
 		}
 
