@@ -113,7 +113,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-	private void UpgradeTower()
+	public void UpgradeTower()
     {
         if (World.Instance.RemoveCoins(m_data.upgradeCosts[m_towerIndex]))
         {
@@ -129,7 +129,7 @@ public class Tower : MonoBehaviour
         }                
     }
 
-    private void SellTower()
+    public void SellTower()
     {
         World.Instance.AddToCoins(m_data.value * .75f);
         Destroy(gameObject);
