@@ -18,7 +18,7 @@ public class AI : MonoBehaviour
 	[SerializeField] float m_damage = 1.0f;
 
     Animator m_animator;
-	List<Status> m_status;
+	List<Status> m_status = new List<Status>();
 	Vector2 m_direction;
 	int m_channel = 0;
 	bool isDead = false;
@@ -219,20 +219,24 @@ public class AI : MonoBehaviour
 	public void StatusChanged(int type, float primaryValue, float addedData, bool AddRemove)
 	{
 		bool alreadyAffect = false;
-		foreach (Status s in m_status)
-		{
-			if(s.m_status == type && s.m_effectiveness == primaryValue && s.m_additionalData == addedData)
-			{
-				if (!AddRemove)
-				{
-					m_status.Remove(s);
-				}
 
-				alreadyAffect = true;
+        if(m_status.Count > 0)
+        {
+            foreach (Status s in m_status)
+            {
+                if (s.m_status == type && s.m_effectiveness == primaryValue && s.m_additionalData == addedData)
+                {
+                    if (!AddRemove)
+                    {
+                        m_status.Remove(s);
+                    }
 
-				break;
-			}
-		}
+                    alreadyAffect = true;
+
+                    break;
+                }
+            }
+        }		
 
 		if (AddRemove && !alreadyAffect)
 		{
@@ -250,7 +254,10 @@ public class AI : MonoBehaviour
 		if (damage > 0) {
 			m_health -= damage;
 
-            m_animator.SetTrigger("Hit");
+            if (m_animator)
+            {
+                m_animator.SetTrigger("Hit");
+            }
 		}
 	}
 }
