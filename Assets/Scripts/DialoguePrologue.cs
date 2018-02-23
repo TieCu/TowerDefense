@@ -19,16 +19,15 @@ public class DialoguePrologue : MonoBehaviour
 
 	void Start()
 	{
-	}
-
-	void Update()
-	{
 		if (m_dialogBox.activeInHierarchy)
 		{
 			m_menu.SetActive(false);
 			Time.timeScale = 0.0f;
 		}
+	}
 
+	void Update()
+	{
 		if (m_talk && Input.GetMouseButtonDown(0))
 		{
 			m_dialogBox.SetActive(true);
