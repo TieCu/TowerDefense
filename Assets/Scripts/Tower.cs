@@ -128,7 +128,7 @@ public class Tower : MonoBehaviour
                 m_data.damage *= m_data.upgradeModifiers[m_towerIndex];
                 m_data.attackRadius *= m_data.upgradeModifiers[m_towerIndex];
                 m_data.attackRate /= m_data.upgradeModifiers[m_towerIndex];
-
+                m_data.value = m_data.upgradeCosts[m_towerIndex];
                 m_towerIndex++;
 
                 fullyUpgraded = (m_towerIndex == m_data.towers.Length);

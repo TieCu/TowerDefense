@@ -57,9 +57,8 @@ public class TowerManagement : MonoBehaviour {
 					//Tower Removal Code
 					if (Input.GetMouseButtonDown(0))
 					{
-						//give money back to the player here from the tower first
-						World.Instance.AddToCoins(hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().value / 2);
-
+                        //give money back to the player here from the tower first
+                        hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().SellTower();
 
 						Destroy(hit.collider.gameObject.GetComponent<TilePiece>().Tower);
 						hit.collider.gameObject.GetComponent<TilePiece>().Tower = null;
@@ -101,7 +100,7 @@ public class TowerManagement : MonoBehaviour {
 					//Tower Placement Code
 					if (Input.GetMouseButtonDown(0))
 					{
-						Vector3 pos = hit.collider.transform.position;
+						Vector3 pos = hit.collider.transform.position + new Vector3(0.0f, 0.5f, 0.0f);
 						GameObject tow = Instantiate(m_tower, pos, Quaternion.identity);
 
 						hit.collider.gameObject.GetComponent<TilePiece>().Tower = tow;
