@@ -17730,6 +17730,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1066486087 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114026362971311008, guid: c74a1329961971d41b2cb23714c2b126,
+    type: 2}
+  m_PrefabInternal: {fileID: 1790400738}
+  m_Script: {fileID: 1453722849, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
 --- !u!1 &1069528605
 GameObject:
   m_ObjectHideFlags: 0
@@ -22034,13 +22040,15 @@ MonoBehaviour:
     m_maxPopulation: 10
   projectileContainer: {fileID: 105594090}
   towerContainer: {fileID: 1276304258}
-  m_TxtLife: {fileID: 674165397}
-  m_TxtMoney: {fileID: 451146475}
+  m_TxtLife: {fileID: 1379048243}
+  m_TxtMoney: {fileID: 1066486087}
   m_endRound1: {fileID: 0}
   m_endRound2: {fileID: 0}
   m_endRound3: {fileID: 0}
   m_endRound7: {fileID: 0}
   m_endRound9: {fileID: 0}
+  m_win: {fileID: 0}
+  m_lose: {fileID: 0}
 --- !u!4 &1377280941
 Transform:
   m_ObjectHideFlags: 0
@@ -22190,6 +22198,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1379048243 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114521108328869934, guid: c74a1329961971d41b2cb23714c2b126,
+    type: 2}
+  m_PrefabInternal: {fileID: 1790400738}
+  m_Script: {fileID: 1453722849, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
 --- !u!1 &1380920400
 GameObject:
   m_ObjectHideFlags: 0
