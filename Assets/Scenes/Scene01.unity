@@ -42163,8 +42163,9 @@ MonoBehaviour:
   - m_health: 100
     m_coins: 500
     m_maxPopulation: 10
-  projectileContainer: {fileID: 899088929}
-  towerContainer: {fileID: 1164073742}
+  m_projectileContainer: {fileID: 0}
+  m_towerContainer: {fileID: 0}
+  m_AIContainer: {fileID: 0}
   m_TxtLife: {fileID: 1625475070}
   m_TxtMoney: {fileID: 1625475069}
   m_endRound1: {fileID: 1766924531}
@@ -42174,7 +42175,7 @@ MonoBehaviour:
   m_endRound9: {fileID: 364717607}
   m_win: {fileID: 1471646370}
   m_lose: {fileID: 66920169}
-  m_musicPlayer: {fileID: 69217976}
+  m_musicPlayer: {fileID: 0}
 --- !u!114 &2106553464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42190,8 +42191,8 @@ MonoBehaviour:
   m_placeable:
     serializedVersion: 2
     m_Bits: 256
-  m_TxtCost: {fileID: 0}
-  m_costPanel: {fileID: 0}
+  m_TxtCost: {fileID: 2079288925}
+  m_costPanel: {fileID: 2105258864}
   m_buyingColor: {r: 0, g: 0, b: 1, a: 0}
   m_sellingColor: {r: 1, g: 0, b: 0, a: 0}
   m_upgradingColor: {r: 1, g: 1, b: 0, a: 0}
