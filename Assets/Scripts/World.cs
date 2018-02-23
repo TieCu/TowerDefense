@@ -105,23 +105,19 @@ public class World : Singleton<World>
 			{
 				m_endRound1.SetActive(true);
 			}
-
-			if (m_roundIndex == 1 && m_endRound2 != null)
+			else if (m_roundIndex == 1 && m_endRound2 != null)
 			{
 				m_endRound2.SetActive(true);
 			}
-
-			if (m_roundIndex == 2 && m_endRound3 != null)
+			else if (m_roundIndex == 2 && m_endRound3 != null)
 			{
 				m_endRound3.SetActive(true);
 			}
-
-			if (m_roundIndex == 6  && m_endRound7 != null)
+			else if (m_roundIndex == 6  && m_endRound7 != null)
 			{
 				m_endRound7.SetActive(true);
 			}
-
-			if (m_roundIndex == 8 && m_endRound9 != null)
+			else if (m_roundIndex == 8 && m_endRound9 != null)
 			{
 				m_endRound9.SetActive(true);
 			}
