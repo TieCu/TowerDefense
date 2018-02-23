@@ -127,7 +127,7 @@ public class Tower : MonoBehaviour
                 m_spriteRenderer.sprite = m_data.towers[m_towerIndex];
                 m_data.damage *= m_data.upgradeModifiers[m_towerIndex];
                 m_data.attackRadius *= m_data.upgradeModifiers[m_towerIndex];
-                m_data.attackRate /= m_data.upgradeModifiers[m_towerIndex];
+                m_data.attackRate /= (m_data.upgradeModifiers[m_towerIndex] - .3f);
                 m_data.value = m_data.upgradeCosts[m_towerIndex];
                 m_towerIndex++;
 
