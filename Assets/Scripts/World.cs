@@ -34,6 +34,7 @@ public class World : Singleton<World>
     [SerializeField] GameObject m_endRound9;
     [SerializeField] GameObject m_win;
     [SerializeField] GameObject m_lose;
+	[SerializeField] GameObject m_musicPlayer;
 
 	Spawner[] m_spawners;
     bool m_gettingReady = true;

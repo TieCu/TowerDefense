@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad6606323812174d856c3e484792346, type: 3}
   m_Name: Cannon
   m_EditorClassIdentifier: 
-  value: 100
-  attackRadius: 2.5
-  damage: 5
-  attackRate: 0.5
+  value: 250
+  attackRadius: 12.65625
+  damage: 25.3125
+  attackRate: 0.24112654
   towerType: 1
   towerStatus:
     status: 1
