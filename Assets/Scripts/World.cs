@@ -153,14 +153,23 @@ public class World : Singleton<World>
 		}
 		else
 		{
-            m_lose.SetActive(true);
 			print("You lost");
-			var children = new List<GameObject>();
-			foreach (Transform child in m_AIContainer.transform) { children.Add(child.gameObject); }
-			children.ForEach(child => Destroy(child));
+			
+			print(m_AIContainer.transform.childCount);
+			for(int i=0;i<m_AIContainer.transform.childCount;i++)
+			{
+				Destroy(m_AIContainer.transform.GetChild(i).gameObject);
+			}
+			foreach(Transform child in m_towerContainer.transform)
+			{
+				Destroy(child.gameObject);
+			}
+
 			m_coins = 0;
 			m_gettingReady = true;
 			NewLevel(m_rounds[m_roundIndex]);
+
+			m_lose.SetActive(true);
 		}
 	}
 
