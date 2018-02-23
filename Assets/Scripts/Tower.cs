@@ -27,6 +27,8 @@ public class Tower : MonoBehaviour
     { 
         m_attackTimer = m_data.attackRate;
 
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
+
 		CircleCollider2D circle = gameObject.GetComponent<CircleCollider2D>();
 		if(circle)
 		{

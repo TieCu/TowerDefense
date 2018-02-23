@@ -34480,7 +34480,7 @@ MonoBehaviour:
   m_task: 1
   m_rounds:
   - m_health: 100
-    m_coins: 500
+    m_coins: 2000
     m_maxPopulation: 100
   - m_health: 100
     m_coins: 500
