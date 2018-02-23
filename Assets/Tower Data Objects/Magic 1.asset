@@ -9,25 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad6606323812174d856c3e484792346, type: 3}
-  m_Name: Lava
+  m_Name: Magic 1
   m_EditorClassIdentifier: 
-  value: 600
-  attackRadius: 3
-  damage: 30
-  attackRate: 1
-  towerType: 3
+  value: 350
+  attackRadius: 2.4
+  damage: 3
+  attackRate: 0.33
+  towerType: 4
   towerStatus:
-    status: 5
-    statusDamage: 10
+    status: 6
+    statusDamage: 1
     time: 3
-  upgradeModifiers:
-  - 1.5
-  - 1.5
-  upgradeCosts:
-  - 900
-  - 1200
-  towers:
-  - {fileID: 21300000, guid: 68841a1fd688abe409570b6c9378375e, type: 3}
-  - {fileID: 21300000, guid: 1ee298e521812124b8cb812af5768cf9, type: 3}
+  sprite: {fileID: 21300000, guid: 08991553f42c15742a7651a0f95ea5f7, type: 3}
+  upgradeCost: 550
   projectile: {fileID: 114642131341648074, guid: 6a22c01e7beac5f4eb9b9572f0382686,
     type: 2}

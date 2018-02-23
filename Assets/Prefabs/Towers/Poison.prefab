@@ -97,8 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac66a10de998dde48ab57d7c3fbd3286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_data: {fileID: 11400000, guid: 4d6cc01fb7ec46742bdd9f9ccce0b7a7, type: 2}
+  m_tower1Data: {fileID: 11400000, guid: aed8ffe69c392a24e982bf86f4cbe5bf, type: 2}
+  m_tower2Data: {fileID: 11400000, guid: be469ee8cdffef943855dae7645e7790, type: 2}
+  m_tower3Data: {fileID: 11400000, guid: 4d6cc01fb7ec46742bdd9f9ccce0b7a7, type: 2}
   m_emitter: {fileID: 1421377750726924}
+  projectile: {fileID: 114642131341648074, guid: 6a22c01e7beac5f4eb9b9572f0382686,
+    type: 2}
+  fullyUpgraded: 0
 --- !u!212 &212370885156003324
 SpriteRenderer:
   m_ObjectHideFlags: 1
