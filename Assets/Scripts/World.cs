@@ -166,6 +166,7 @@ public class World : Singleton<World>
 			m_coins = 0;
 			m_gettingReady = true;
 			m_deadPopulation = 0;
+			m_populationMaxed = false;
 			NewLevel(m_rounds[m_roundIndex]);
 
 			m_lose.SetActive(true);
