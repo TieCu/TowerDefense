@@ -9,25 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad6606323812174d856c3e484792346, type: 3}
-  m_Name: Poison
+  m_Name: Poison 2
   m_EditorClassIdentifier: 
-  value: 400
-  attackRadius: 2.8
-  damage: 10
+  value: 600
+  attackRadius: 3.1
+  damage: 15
   attackRate: 1
   towerType: 5
   towerStatus:
     status: 6
-    statusDamage: 6
+    statusDamage: 9
     time: 2
-  upgradeModifiers:
-  - 1.5
-  - 1.5
-  upgradeCosts:
-  - 700
-  - 1000
-  towers:
-  - {fileID: 21300000, guid: b34d7bfe92b575247b986be202d46ff2, type: 3}
-  - {fileID: 21300000, guid: 57a717f588146eb46ac658bcb302da27, type: 3}
+  sprite: {fileID: 21300000, guid: b34d7bfe92b575247b986be202d46ff2, type: 3}
+  upgradeCost: 900
   projectile: {fileID: 114642131341648074, guid: 6a22c01e7beac5f4eb9b9572f0382686,
     type: 2}

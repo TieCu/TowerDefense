@@ -62,7 +62,7 @@ public class World : Singleton<World>
 
 	public void NewLevel(Round round)
 	{
-		print("New Level");
+		print("New Level: " + m_roundIndex);
 
 		if (m_spawners != null && m_gettingReady)
 		{
@@ -99,6 +99,33 @@ public class World : Singleton<World>
 
 		if(!m_gettingReady && m_deadPopulation == m_maxPopulation && m_populationMaxed && m_health > 0)
 		{
+			print("Round " + m_roundIndex + " won");
+
+			if (m_roundIndex == 0 && m_endRound1 != null)
+			{
+				m_endRound1.SetActive(true);
+			}
+
+			if (m_roundIndex == 1 && m_endRound2 != null)
+			{
+				m_endRound2.SetActive(true);
+			}
+
+			if (m_roundIndex == 2 && m_endRound3 != null)
+			{
+				m_endRound3.SetActive(true);
+			}
+
+			if (m_roundIndex == 6  && m_endRound7 != null)
+			{
+				m_endRound7.SetActive(true);
+			}
+
+			if (m_roundIndex == 8 && m_endRound9 != null)
+			{
+				m_endRound9.SetActive(true);
+			}
+
 			m_gettingReady = true;
 			m_roundIndex++;
 			if (m_roundIndex < m_rounds.Length)
@@ -110,31 +137,6 @@ public class World : Singleton<World>
 				GameOver(true);
 			}
 		}
-
-        if(m_roundIndex == 0 && m_deadPopulation == m_maxPopulation && m_endRound1 != null)
-        {
-            m_endRound1.SetActive(true);
-        }
-
-        if (m_roundIndex == 1 && m_deadPopulation == m_maxPopulation && m_endRound2 != null)
-        {
-            m_endRound2.SetActive(true);
-        }
-
-        if (m_roundIndex == 2 && m_deadPopulation == m_maxPopulation && m_endRound3 != null)
-        {
-            m_endRound3.SetActive(true);
-        }
-
-        if (m_roundIndex == 6 && m_deadPopulation == m_maxPopulation && m_endRound7 != null)
-        {
-            m_endRound7.SetActive(true);
-        }
-
-        if (m_roundIndex == 8 && m_deadPopulation == m_maxPopulation && m_endRound9 != null)
-        {
-            m_endRound9.SetActive(true);
-        }
 
         if (m_health <= 0)
 		{
@@ -153,14 +155,24 @@ public class World : Singleton<World>
 		}
 		else
 		{
-            m_lose.SetActive(true);
 			print("You lost");
-			var children = new List<GameObject>();
-			foreach (Transform child in m_AIContainer.transform) { children.Add(child.gameObject); }
-			children.ForEach(child => Destroy(child));
+			
+			print(m_AIContainer.transform.childCount);
+			for(int i=0;i<m_AIContainer.transform.childCount;i++)
+			{
+				Destroy(m_AIContainer.transform.GetChild(i).gameObject);
+			}
+			foreach(Transform child in m_towerContainer.transform)
+			{
+				Destroy(child.gameObject);
+			}
+
 			m_coins = 0;
 			m_gettingReady = true;
+			m_deadPopulation = 0;
 			NewLevel(m_rounds[m_roundIndex]);
+
+			m_lose.SetActive(true);
 		}
 	}
 
