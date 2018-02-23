@@ -52,7 +52,7 @@ public class Tower : MonoBehaviour
         {
             if (m_target)
             {
-                Projectile bullet = Instantiate(m_data.projectile, m_emitter.transform.position, Quaternion.identity, World.Instance.projectileContainer.transform);
+                Projectile bullet = Instantiate(m_data.projectile, m_emitter.transform.position, Quaternion.identity, World.Instance.m_projectileContainer.transform);
                 bullet.SetTarget(m_target);
                 bullet.SetDamage_Status(m_data.damage, m_data.towerStatus);
 

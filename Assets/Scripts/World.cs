@@ -19,8 +19,10 @@ public class World : Singleton<World>
 	[SerializeField] eObjective m_task;
 	[SerializeField] Round[] m_rounds;
 
-    public GameObject projectileContainer;
-    public GameObject towerContainer;
+    public GameObject m_projectileContainer;
+    public GameObject m_towerContainer;
+    public GameObject m_AIContainer;
+
 
 	[Header("Player Stats")]
 	[SerializeField] TextMeshProUGUI m_TxtLife = null;
@@ -94,7 +96,7 @@ public class World : Singleton<World>
 			m_timer += Time.deltaTime;
 		}
 
-		if(!m_gettingReady && m_deadPopulation == m_maxPopulation && m_populationMaxed)
+		if(!m_gettingReady && m_deadPopulation == m_maxPopulation && m_populationMaxed && m_health > 0)
 		{
 			m_gettingReady = true;
 			m_roundIndex++;
@@ -146,13 +148,19 @@ public class World : Singleton<World>
 		{
             m_win.SetActive(true);
 			print("You won");
+			Time.timeScale = 0.0f;
 		}
 		else
 		{
-            m_lose.SetActive(false);
+            m_lose.SetActive(true);
 			print("You lost");
+			var children = new List<GameObject>();
+			foreach (Transform child in m_AIContainer.transform) { children.Add(child.gameObject); }
+			children.ForEach(child => Destroy(child));
+			m_coins = 0;
+			m_gettingReady = true;
+			NewLevel(m_rounds[m_roundIndex]);
 		}
-		Time.timeScale = 0.0f;
 	}
 
 	public void NextRound()
