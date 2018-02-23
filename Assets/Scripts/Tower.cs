@@ -57,6 +57,7 @@ public class Tower : MonoBehaviour
                 bullet.SetDamage_Status(m_data.damage, m_data.towerStatus);
 
                 m_attackTimer = m_data.attackRate;
+				Destroy(bullet, 10.0f);
             }
         }
     }
