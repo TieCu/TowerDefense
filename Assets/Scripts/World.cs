@@ -51,6 +51,7 @@ public class World : Singleton<World>
 		m_health = round.m_health;
 		m_maxPopulation = round.m_maxPopulation;
 		m_coins += round.m_coins;
+		m_deadPopulation = 0;
 
 		m_TxtMoney.text = "$" + m_coins.ToString();
 		m_TxtLife.text = m_health.ToString();
