@@ -119,7 +119,7 @@ public class Tower : MonoBehaviour
 
 	public void UpgradeTower()
     {
-        if (World.Instance.RemoveCoins(m_data.upgradeCosts[m_towerIndex]))
+        if (!fullyUpgraded && World.Instance.RemoveCoins(m_data.upgradeCosts[m_towerIndex]))
         {
             if (m_towerIndex < m_data.towers.Length || m_towerIndex < m_data.upgradeModifiers.Length)
             {
