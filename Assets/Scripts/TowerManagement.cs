@@ -58,6 +58,8 @@ public class TowerManagement : MonoBehaviour {
 					if (Input.GetMouseButtonDown(0))
 					{
 						//give money back to the player here from the tower first
+						World.Instance.AddToCoins(hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().value / 2);
+
 
 						Destroy(hit.collider.gameObject.GetComponent<TilePiece>().Tower);
 						hit.collider.gameObject.GetComponent<TilePiece>().Tower = null;
@@ -137,13 +139,14 @@ public class TowerManagement : MonoBehaviour {
 						m_currTileColor = Color.Lerp(m_actualColor, m_upgradingColor, 0.5f);
 						temp.material.color = m_currTileColor;
 					}
-					//Tower Removal Code
+					//Tower Upgrade Code
 					if (Input.GetMouseButtonDown(0))
 					{
 						//upgrade the tower and subtract the gold from the player here
+//						hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>();
 
 
-					//check if this tile is fully upgraded, if it is then revert it back to its normal color
+						//check if this tile is fully upgraded, if it is then revert it back to its normal color
 						//m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
 					}
 
