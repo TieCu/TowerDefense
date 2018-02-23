@@ -42474,12 +42474,6 @@ MonoBehaviour:
   - m_health: 1
     m_coins: 1000
     m_maxPopulation: 10
-  - m_health: 100
-    m_coins: 500
-    m_maxPopulation: 10
-  - m_health: 100
-    m_coins: 500
-    m_maxPopulation: 10
   m_projectileContainer: {fileID: 1800301368}
   m_towerContainer: {fileID: 1402899483}
   m_AIContainer: {fileID: 597674639}
