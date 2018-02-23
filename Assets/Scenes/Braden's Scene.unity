@@ -1096,6 +1096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bin: {fileID: 1890109869}
+  m_rounds: 
   m_spawnerOn: 1
 --- !u!1001 &1485768924
 Prefab:
@@ -1494,43 +1495,33 @@ MonoBehaviour:
   m_rounds:
   - m_health: 10
     m_coins: 200
-    m_delay: 12
     m_maxPopulation: 10
   - m_health: 10
     m_coins: 300
-    m_delay: 3
-    m_maxPopulation: 20
+    m_maxPopulation: 25
+  - m_health: 100
+    m_coins: 100
+    m_maxPopulation: 1
   - m_health: 0
     m_coins: 0
-    m_delay: 0
     m_maxPopulation: 0
   - m_health: 0
     m_coins: 0
-    m_delay: 0
     m_maxPopulation: 0
   - m_health: 0
     m_coins: 0
-    m_delay: 0
     m_maxPopulation: 0
   - m_health: 0
     m_coins: 0
-    m_delay: 0
     m_maxPopulation: 0
   - m_health: 0
     m_coins: 0
-    m_delay: 0
     m_maxPopulation: 0
   - m_health: 0
     m_coins: 0
-    m_delay: 0
     m_maxPopulation: 0
   - m_health: 0
     m_coins: 0
-    m_delay: 0
-    m_maxPopulation: 0
-  - m_health: 0
-    m_coins: 0
-    m_delay: 0
     m_maxPopulation: 0
   projectileContainer: {fileID: 1001713804}
   towerContainer: {fileID: 1096373717}

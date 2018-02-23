@@ -18,7 +18,7 @@ MonoBehaviour:
   towerType: 4
   towerStatus:
     status: 6
-    statusDamage: 0
+    statusDamage: 1
     time: 3
   upgradeModifiers: []
   upgradeCosts: []
