@@ -158,7 +158,7 @@ public class TowerManagement : MonoBehaviour {
 						if(!hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().fullyUpgraded)
 						{
 							m_costPanel.SetActive(true);
-							m_TxtCost.text = "Cost: "; ((int)hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().upgradeCost).ToString();
+							m_TxtCost.text = "Cost: " + ((int)hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().upgradeCost).ToString();
 							m_currTileColor = Color.Lerp(m_actualColor, m_upgradingColor, 0.5f);
 							temp.material.color = m_currTileColor;
 
