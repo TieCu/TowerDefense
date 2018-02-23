@@ -143,7 +143,7 @@ public class TowerManagement : MonoBehaviour {
 					if (Input.GetMouseButtonDown(0))
 					{
 						//upgrade the tower and subtract the gold from the player here
-//						hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>();
+						hit.collider.gameObject.GetComponent<TilePiece>().Tower.GetComponent<Tower>().UpgradeTower();
 
 
 						//check if this tile is fully upgraded, if it is then revert it back to its normal color

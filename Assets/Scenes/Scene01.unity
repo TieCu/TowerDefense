@@ -26672,6 +26672,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114742631930887432, guid: c74a1329961971d41b2cb23714c2b126,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224556102090639160, guid: c74a1329961971d41b2cb23714c2b126,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -26877,6 +26882,31 @@ Prefab:
       value: 
       objectReference: {fileID: 1290260505820308, guid: 89ee114b81756e04e87d4d8b76f14833,
         type: 2}
+    - target: {fileID: 114742631930887432, guid: c74a1329961971d41b2cb23714c2b126,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114742631930887432, guid: c74a1329961971d41b2cb23714c2b126,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114742631930887432, guid: c74a1329961971d41b2cb23714c2b126,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2106553463}
+    - target: {fileID: 114742631930887432, guid: c74a1329961971d41b2cb23714c2b126,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextRound
+      objectReference: {fileID: 0}
+    - target: {fileID: 114742631930887432, guid: c74a1329961971d41b2cb23714c2b126,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c74a1329961971d41b2cb23714c2b126, type: 2}
   m_IsPrefabParent: 0
@@ -34449,6 +34479,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_task: 1
   m_rounds:
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 100
+  - m_health: 100
+    m_coins: 500
+    m_maxPopulation: 10
   - m_health: 100
     m_coins: 500
     m_maxPopulation: 10
