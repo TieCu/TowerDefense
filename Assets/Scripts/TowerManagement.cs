@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TowerManagement : MonoBehaviour {
+public class TowerManagement : MonoBehaviour
+{
 
 	private bool isSelling = false;
 	private bool isUpgrading = false;
@@ -18,19 +19,22 @@ public class TowerManagement : MonoBehaviour {
 	private Color m_actualColor;
 
 	[Header("Highlighting Colors")]
-	[SerializeField] Color m_buyingColor;
+	[SerializeField]
+	Color m_buyingColor;
 	[SerializeField] Color m_sellingColor;
 	[SerializeField] Color m_upgradingColor;
 
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
 		m_costPanel.SetActive(false);
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		
+	void Update()
+	{
+
 
 
 		//Selling code
@@ -77,7 +81,7 @@ public class TowerManagement : MonoBehaviour {
 				}
 
 			}
-				else m_costPanel.SetActive(false);
+			else m_costPanel.SetActive(false);
 
 		}
 
@@ -112,10 +116,14 @@ public class TowerManagement : MonoBehaviour {
 					if (Input.GetMouseButtonDown(0))
 					{
 						Vector3 pos = hit.collider.transform.position + new Vector3(0.0f, 0.5f, 0.0f);
-						GameObject tow = Instantiate(m_tower, pos, Quaternion.identity);
+						if ()
+						{
+							GameObject tow = Instantiate(m_tower, pos, Quaternion.identity);
 
-						hit.collider.gameObject.GetComponent<TilePiece>().Tower = tow;
-						m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
+
+							hit.collider.gameObject.GetComponent<TilePiece>().Tower = tow;
+							m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
+						}
 					}
 
 				}
@@ -174,7 +182,7 @@ public class TowerManagement : MonoBehaviour {
 		isUpgrading = !isUpgrading;
 		isSelling = false;
 		m_tower = null;
-		if(isUpgrading == false) m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
+		if (isUpgrading == false) m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
 
 	}
 	public void SellTower()
@@ -182,7 +190,7 @@ public class TowerManagement : MonoBehaviour {
 		isSelling = !isSelling;
 		isUpgrading = false;
 		m_tower = null;
-		if(isSelling) m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
+		if (isSelling) m_currentTile.gameObject.GetComponent<Renderer>().material.color = m_actualColor;
 
 	}
 
