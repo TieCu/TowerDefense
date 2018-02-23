@@ -20,6 +20,11 @@ public class Spawner : MonoBehaviour
 		m_population++;
 	}
 
+	public void Reset()
+	{
+		m_population = 0;
+	}
+
 	public GameObject Spawn(GameObject go)
 	{
 		GameObject copy = null;
