@@ -35,6 +35,7 @@ public class World : Singleton<World>
     [SerializeField] GameObject m_win;
     [SerializeField] GameObject m_lose;
 
+	Spawner[] m_spawners;
     bool m_gettingReady = true;
 	bool m_paused = false;
 	bool m_populationMaxed = false;
@@ -52,11 +53,24 @@ public class World : Singleton<World>
 		{
 			NewLevel(m_rounds[m_roundIndex]);
 		}
+
+		m_spawners = FindObjectsOfType<Spawner>();
 	}
 
 	public void NewLevel(Round round)
 	{
 		print("New Level");
+
+		if (m_spawners != null && m_gettingReady)
+		{
+			m_populationMaxed = false;
+			foreach (Spawner s in m_spawners)
+			{
+				s.SpawnerOn = false;
+				s.Reset();
+			}
+		}
+
 		m_health = round.m_health;
 		m_maxPopulation = round.m_maxPopulation;
 		m_coins += round.m_coins;
@@ -68,7 +82,7 @@ public class World : Singleton<World>
 
 	void Update()
 	{
-        if (Input.GetKeyDown(KeyCode.Escape))
+		if (Input.GetKeyDown(KeyCode.Escape))
         {
 			Paused();
         }
@@ -94,27 +108,27 @@ public class World : Singleton<World>
 			}
 		}
 
-        if(m_roundIndex == 0 && m_deadPopulation == m_maxPopulation)
+        if(m_roundIndex == 0 && m_deadPopulation == m_maxPopulation && m_endRound1 != null)
         {
             m_endRound1.SetActive(true);
         }
 
-        if (m_roundIndex == 1 && m_deadPopulation == m_maxPopulation)
+        if (m_roundIndex == 1 && m_deadPopulation == m_maxPopulation && m_endRound2 != null)
         {
             m_endRound2.SetActive(true);
         }
 
-        if (m_roundIndex == 2 && m_deadPopulation == m_maxPopulation)
+        if (m_roundIndex == 2 && m_deadPopulation == m_maxPopulation && m_endRound3 != null)
         {
             m_endRound3.SetActive(true);
         }
 
-        if (m_roundIndex == 6 && m_deadPopulation == m_maxPopulation)
+        if (m_roundIndex == 6 && m_deadPopulation == m_maxPopulation && m_endRound7 != null)
         {
             m_endRound7.SetActive(true);
         }
 
-        if (m_roundIndex == 8 && m_deadPopulation == m_maxPopulation)
+        if (m_roundIndex == 8 && m_deadPopulation == m_maxPopulation && m_endRound9 != null)
         {
             m_endRound9.SetActive(true);
         }
@@ -143,35 +157,22 @@ public class World : Singleton<World>
 
 	public void NextRound()
 	{
-		m_gettingReady = false;
-
-		var spawners = FindObjectsOfType<Spawner>();
-		if (spawners != null)
+		if (m_spawners != null)
 		{
-			if (m_gettingReady)
+			foreach (Spawner s in m_spawners)
 			{
-				m_populationMaxed = false;
-				foreach (Spawner s in spawners)
+				foreach (int i in s.OnRounds)
 				{
-					s.SpawnerOn = false;
-				}
-			}
-			else
-			{
-				foreach (Spawner s in spawners)
-				{
-					foreach (int i in s.OnRounds)
+					if (i == m_roundIndex)
 					{
-						if (i == m_roundIndex)
-						{
-							s.SpawnerOn = true;
-							print(s.name + " is on");
-						}
+						s.SpawnerOn = true;
+						print(s.name + " is on");
 					}
 				}
-
 			}
 		}
+
+		m_gettingReady = false;
 	}
 
 	void UpdateSpawners()
