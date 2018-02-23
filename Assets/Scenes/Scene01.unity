@@ -2259,8 +2259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.006958, y: 0.00094604}
-  m_SizeDelta: {x: 2506.4, y: 1470.8}
+  m_AnchoredPosition: {x: 5.2, y: 2.7}
+  m_SizeDelta: {x: 2829.6, y: 1580.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &77803313
 MonoBehaviour:
@@ -42174,7 +42174,6 @@ MonoBehaviour:
   m_endRound9: {fileID: 364717607}
   m_win: {fileID: 1471646370}
   m_lose: {fileID: 66920169}
-  m_musicPlayer: {fileID: 69217976}
 --- !u!114 &2106553464
 MonoBehaviour:
   m_ObjectHideFlags: 0
