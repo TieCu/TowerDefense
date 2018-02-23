@@ -2259,8 +2259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.2, y: 2.7}
-  m_SizeDelta: {x: 2829.6, y: 1580.2}
+  m_AnchoredPosition: {x: 0.006958, y: 0.00094604}
+  m_SizeDelta: {x: 2506.4, y: 1470.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &77803313
 MonoBehaviour:
@@ -42163,8 +42163,9 @@ MonoBehaviour:
   - m_health: 100
     m_coins: 500
     m_maxPopulation: 10
-  projectileContainer: {fileID: 899088929}
-  towerContainer: {fileID: 1164073742}
+  m_projectileContainer: {fileID: 0}
+  m_towerContainer: {fileID: 0}
+  m_AIContainer: {fileID: 0}
   m_TxtLife: {fileID: 1625475070}
   m_TxtMoney: {fileID: 1625475069}
   m_endRound1: {fileID: 1766924531}
@@ -42174,6 +42175,7 @@ MonoBehaviour:
   m_endRound9: {fileID: 364717607}
   m_win: {fileID: 1471646370}
   m_lose: {fileID: 66920169}
+  m_musicPlayer: {fileID: 0}
 --- !u!114 &2106553464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42189,8 +42191,8 @@ MonoBehaviour:
   m_placeable:
     serializedVersion: 2
     m_Bits: 256
-  m_TxtCost: {fileID: 0}
-  m_costPanel: {fileID: 0}
+  m_TxtCost: {fileID: 2079288925}
+  m_costPanel: {fileID: 2105258864}
   m_buyingColor: {r: 0, g: 0, b: 1, a: 0}
   m_sellingColor: {r: 1, g: 0, b: 0, a: 0}
   m_upgradingColor: {r: 1, g: 1, b: 0, a: 0}
