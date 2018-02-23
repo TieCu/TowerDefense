@@ -12,9 +12,16 @@ public class Projectile : MonoBehaviour
     float m_damage;
     float m_maxDistance = 5.0f;
     string m_enemyTag = "Enemy";
-        
+    float m_timedLife = 1.0f;  
     void Update()
     {
+        m_timedLife -= Time.deltaTime;
+
+        if (m_timedLife <= 0.0f)
+        {
+            Destroy(gameObject);
+        }
+
         if (m_targetObject)
         {
             m_targetVec = m_targetObject.transform.position;
