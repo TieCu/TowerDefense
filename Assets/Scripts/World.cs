@@ -32,6 +32,8 @@ public class World : Singleton<World>
     [SerializeField] GameObject m_endRound3;
     [SerializeField] GameObject m_endRound7;
     [SerializeField] GameObject m_endRound9;
+    [SerializeField] GameObject m_win;
+    [SerializeField] GameObject m_lose;
 
     bool m_gettingReady = true;
 	bool m_paused = false;
@@ -128,10 +130,12 @@ public class World : Singleton<World>
 		print("Game over");
 		if(winLose)
 		{
+            m_win.SetActive(true);
 			print("You won");
 		}
 		else
 		{
+            m_lose.SetActive(false);
 			print("You lost");
 		}
 		Time.timeScale = 0.0f;
