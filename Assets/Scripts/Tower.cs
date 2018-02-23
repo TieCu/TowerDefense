@@ -10,14 +10,14 @@ public class Tower : MonoBehaviour
 
     [SerializeField] GameObject m_emitter;
 
-    float m_value;
+    [SerializeField] float m_value;
     float m_attackRadius;
     float m_damage;
     float m_attackRate;
     eTowerType m_towerType;
     Status m_towerStatus;
     Sprite m_sprite;
-    float m_upgradeCost;
+    public float upgradeCost;
     int numUpgrades = 2;
 
     public Projectile projectile;
