@@ -39,10 +39,6 @@ public class World : Singleton<World>
 
 	void Start()
 	{
-		m_TxtMoney.text = "$" + m_coins.ToString();
-		m_TxtLife.text = m_health.ToString();
-
-
 		if (m_roundIndex < m_rounds.Length)
 		{
 			NewLevel(m_rounds[m_roundIndex]);
@@ -55,6 +51,9 @@ public class World : Singleton<World>
 		m_health = round.m_health;
 		m_maxPopulation = round.m_maxPopulation;
 		m_coins += round.m_coins;
+
+		m_TxtMoney.text = "$" + m_coins.ToString();
+		m_TxtLife.text = m_health.ToString();
 	}
 
 	void Update()
@@ -79,14 +78,30 @@ public class World : Singleton<World>
 			{
 				NewLevel(m_rounds[m_roundIndex]);
 			}
+			else
+			{
+				GameOver(true);
+			}
 		}
 
-        print("Wave " + m_roundIndex + ", " + m_health + " health, " + m_coins + " coins, " + m_deadPopulation + " dead");
+		if(m_health <= 0)
+		{
+			GameOver(false);
+		}
 	}
 
-	public void Clicked()
+	void GameOver(bool winLose)
 	{
-		print("Clicked");
+		print("Game over");
+		if(winLose)
+		{
+			print("You won");
+		}
+		else
+		{
+			print("You lost");
+		}
+		Time.timeScale = 0.0f;
 	}
 
 	public void NextRound()

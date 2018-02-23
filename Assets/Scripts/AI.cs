@@ -155,9 +155,12 @@ public class AI : MonoBehaviour
 	private void OnDestroy()
 	{
 		World world = FindObjectOfType<World>();
-		if (world && isDead)
+		if (world)
 		{
-			world.AddToCoins(m_value);
+			if(isDead)
+			{
+				world.AddToCoins(m_value);
+			}
 			world.DeadNow();
 		}
 	}
