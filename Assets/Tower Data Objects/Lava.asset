@@ -20,8 +20,12 @@ MonoBehaviour:
     status: 5
     statusDamage: 10
     time: 3
-  upgradeModifiers: []
-  upgradeCosts: []
+  upgradeModifiers:
+  - 1.5
+  - 1.5
+  upgradeCosts:
+  - 900
+  - 1200
   towers:
   - {fileID: 21300000, guid: 68841a1fd688abe409570b6c9378375e, type: 3}
   - {fileID: 21300000, guid: 1ee298e521812124b8cb812af5768cf9, type: 3}

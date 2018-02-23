@@ -22,8 +22,10 @@ MonoBehaviour:
     time: 0
   upgradeModifiers:
   - 1.5
+  - 1.5
   upgradeCosts:
-  - 200
+  - 600
+  - 900
   towers:
   - {fileID: 21300000, guid: 4dbeaece6a77a274487503b7be56dfe2, type: 3}
   - {fileID: 21300000, guid: 6c7fe3022fbbb2a4fa3aea19e7fcd448, type: 3}

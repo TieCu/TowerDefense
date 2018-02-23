@@ -13,6 +13,8 @@ public class Tower : MonoBehaviour
     public float damage { get { return m_data.damage; } }
     public float attackRate { get { return m_data.attackRate; } }
 
+    public bool fullyUpgraded = false;
+
     SpriteRenderer m_spriteRenderer;
     GameObject m_target;
     List<GameObject> m_possibleTargets = new List<GameObject>();
@@ -125,6 +127,8 @@ public class Tower : MonoBehaviour
                 m_data.attackRate /= m_data.upgradeModifiers[m_towerIndex];
 
                 m_towerIndex++;
+
+                fullyUpgraded = (m_towerIndex == m_data.towers.Length);
             }
         }                
     }
