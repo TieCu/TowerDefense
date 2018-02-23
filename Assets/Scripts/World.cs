@@ -101,31 +101,31 @@ public class World : Singleton<World>
 		{
 			print("Round " + m_roundIndex + " won");
 
-			if (m_roundIndex == 0 && m_endRound1 != null)
-			{
-				m_endRound1.SetActive(true);
-			}
-			else if (m_roundIndex == 1 && m_endRound2 != null)
-			{
-				m_endRound2.SetActive(true);
-			}
-			else if (m_roundIndex == 2 && m_endRound3 != null)
-			{
-				m_endRound3.SetActive(true);
-			}
-			else if (m_roundIndex == 6  && m_endRound7 != null)
-			{
-				m_endRound7.SetActive(true);
-			}
-			else if (m_roundIndex == 8 && m_endRound9 != null)
-			{
-				m_endRound9.SetActive(true);
-			}
-
 			m_gettingReady = true;
 			m_roundIndex++;
 			if (m_roundIndex < m_rounds.Length)
 			{
+				if (m_roundIndex == 0 && m_endRound1 != null)
+				{
+					m_endRound1.SetActive(true);
+				}
+				else if (m_roundIndex == 1 && m_endRound2 != null)
+				{
+					m_endRound2.SetActive(true);
+				}
+				else if (m_roundIndex == 2 && m_endRound3 != null)
+				{
+					m_endRound3.SetActive(true);
+				}
+				else if (m_roundIndex == 6 && m_endRound7 != null)
+				{
+					m_endRound7.SetActive(true);
+				}
+				else if (m_roundIndex == 8 && m_endRound9 != null)
+				{
+					m_endRound9.SetActive(true);
+				}
+
 				NewLevel(m_rounds[m_roundIndex]);
 			}
 			else
