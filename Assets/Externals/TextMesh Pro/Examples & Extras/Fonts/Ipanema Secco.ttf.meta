@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e4d7dbfb919d887458e28c4a3f5c1b60
+timeCreated: 1519362690
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: 'Ipanema Secco '
+  fontNames:
+  - 'Ipanema Secco '
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
