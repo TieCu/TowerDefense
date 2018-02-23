@@ -18625,7 +18625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304a07dad609b6d4686c85588b5fe30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bin: {fileID: 105594091}
+  m_bin: {fileID: 1148996878}
   m_rounds: 000000000300000006000000
   m_spawnerOn: 0
 --- !u!114 &1116933791
@@ -18824,6 +18824,34 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1148996877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1148996878}
+  m_Layer: 0
+  m_Name: AIs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1148996878
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1148996877}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1377280941}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1154971077
 GameObject:
   m_ObjectHideFlags: 0
@@ -22029,7 +22057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_task: 1
   m_rounds:
-  - m_health: 100
+  - m_health: 1
     m_coins: 2000
     m_maxPopulation: 20
   - m_health: 100
@@ -22038,8 +22066,9 @@ MonoBehaviour:
   - m_health: 100
     m_coins: 500
     m_maxPopulation: 10
-  projectileContainer: {fileID: 105594090}
-  towerContainer: {fileID: 1276304258}
+  m_projectileContainer: {fileID: 105594090}
+  m_towerContainer: {fileID: 1276304258}
+  m_AIContainer: {fileID: 1148996877}
   m_TxtLife: {fileID: 1379048243}
   m_TxtMoney: {fileID: 1066486087}
   m_endRound1: {fileID: 0}
@@ -22049,6 +22078,7 @@ MonoBehaviour:
   m_endRound9: {fileID: 0}
   m_win: {fileID: 0}
   m_lose: {fileID: 0}
+  m_musicPlayer: {fileID: 0}
 --- !u!4 &1377280941
 Transform:
   m_ObjectHideFlags: 0
@@ -22061,6 +22091,7 @@ Transform:
   m_Children:
   - {fileID: 105594091}
   - {fileID: 1276304259}
+  - {fileID: 1148996878}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22079,6 +22110,8 @@ MonoBehaviour:
   m_placeable:
     serializedVersion: 2
     m_Bits: 256
+  m_TxtCost: {fileID: 0}
+  m_costPanel: {fileID: 0}
   m_buyingColor: {r: 0, g: 0, b: 1, a: 0}
   m_sellingColor: {r: 1, g: 0, b: 0, a: 0}
   m_upgradingColor: {r: 1, g: 1, b: 0, a: 0}

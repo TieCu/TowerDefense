@@ -33889,7 +33889,6 @@ GameObject:
   - component: {fileID: 1678908539}
   - component: {fileID: 1678908538}
   - component: {fileID: 1678908537}
-  - component: {fileID: 1678908541}
   m_Layer: 0
   m_Name: Path2D (67)
   m_TagString: Untagged
@@ -33949,7 +33948,7 @@ MonoBehaviour:
   m_occupied: 0
   m_tower: {fileID: 0}
   m_contribute: 3
-  m_purpose: 1
+  m_purpose: 0
   m_spawns: {fileID: 114461222319817900, guid: d64eb6f8ee1ae35419d138120a6ba485, type: 2}
   m_spawnTime: 1
   m_channel: 2
@@ -33967,7 +33966,7 @@ MonoBehaviour:
   m_occupied: 0
   m_tower: {fileID: 0}
   m_contribute: 2
-  m_purpose: 1
+  m_purpose: 0
   m_spawns: {fileID: 114601673418548590, guid: 56bb1dfc931880649ab80c0863ab27e2, type: 2}
   m_spawnTime: 1
   m_channel: 1
@@ -34015,20 +34014,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!114 &1678908541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1678908535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 304a07dad609b6d4686c85588b5fe30d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_bin: {fileID: 899088930}
-  m_rounds: 01000000
-  m_spawnerOn: 0
 --- !u!4 &1684016865 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4951657052966302, guid: 5706e2ae65f9e0341866cc4614e00405,
