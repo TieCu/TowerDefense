@@ -101,6 +101,8 @@ MonoBehaviour:
   m_tower2Data: {fileID: 11400000, guid: 194da8ff9b24a6a41b024f7c714ad4e2, type: 2}
   m_tower3Data: {fileID: 11400000, guid: b575a50efd39ed74899690eb1e7b5271, type: 2}
   m_emitter: {fileID: 1874797279382694}
+  m_value: 400
+  upgradeCost: 0
   projectile: {fileID: 114642131341648074, guid: 6a22c01e7beac5f4eb9b9572f0382686,
     type: 2}
   fullyUpgraded: 0
