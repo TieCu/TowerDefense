@@ -9,25 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad6606323812174d856c3e484792346, type: 3}
-  m_Name: Ice
+  m_Name: Balista 1
   m_EditorClassIdentifier: 
-  value: 400
-  attackRadius: 4
-  damage: 5
-  attackRate: 0.5
-  towerType: 2
+  value: 250
+  attackRadius: 2.7
+  damage: 15
+  attackRate: 1.5
+  towerType: 0
   towerStatus:
-    status: 4
-    statusDamage: 1
-    time: 2
-  upgradeModifiers:
-  - 1.5
-  - 1.5
-  upgradeCosts:
-  - 700
-  - 1000
-  towers:
-  - {fileID: 21300000, guid: c554df7eaa085944abad6adb0b192a43, type: 3}
-  - {fileID: 21300000, guid: 9559aed5416190249b6ca9a8a5c418ed, type: 3}
+    status: 1
+    statusDamage: 0
+    time: 0
+  sprite: {fileID: 21300000, guid: 692e6aa796895494f8736404a3c7ed92, type: 3}
+  upgradeCost: 400
   projectile: {fileID: 114642131341648074, guid: 6a22c01e7beac5f4eb9b9572f0382686,
     type: 2}
