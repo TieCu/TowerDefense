@@ -13,22 +13,24 @@ public class AI : MonoBehaviour
 	}
 
 	[SerializeField] float m_health = 10.0f;
-	[SerializeField] float m_speed = 1.0f;
+	[SerializeField] protected float m_speed = 1.0f;
 	[SerializeField] float m_value = 1.0f;
 	[SerializeField] float m_damage = 1.0f;
 
-	List<Status> m_status;
+    Animator m_animator;
+	List<Status> m_status = new List<Status>();
 	Vector2 m_direction;
 	int m_channel = 0;
+	bool isDead = false;
 
     public float Health { get { return m_health; } }
 	public float Value { get { return m_damage; } }
 	public int Channel { get { return m_channel; } }
 
-	private void Start()
+	virtual protected void Start()
 	{
 		m_direction = Vector2.zero;
-
+        m_animator = GetComponent<Animator>();
 		m_status = new List<Status>();
 
 		Status start = new Status();
@@ -39,11 +41,12 @@ public class AI : MonoBehaviour
 
 	void Update()
 	{
-		if (m_health <= 0.0f)
-		{
-			Destroy(gameObject);
-		}
+		UpdateHealth();
+		UpdateMovement();
+	}
 
+	virtual protected void UpdateMovement()
+	{
 		float speed = m_speed;
 		StatusEffect(ref speed);
 
@@ -52,6 +55,15 @@ public class AI : MonoBehaviour
 		velocity.y = m_direction.y;
 
 		transform.position = transform.position + (velocity * Time.deltaTime * speed);
+	}
+
+	virtual protected void UpdateHealth()
+	{
+		if (m_health <= 0.0f)
+		{
+			isDead = true;
+			Destroy(gameObject);
+		}
 	}
 
 	private void StatusEffect(ref float speed)
@@ -68,6 +80,21 @@ public class AI : MonoBehaviour
 					{
 						speed /= m_status[i].m_effectiveness;
 					}
+
+					print(speed);
+
+					//Status glue = m_status[i];
+					//glue.m_additionalData -= Time.deltaTime;
+					//m_status[i] = glue;
+
+					//if (m_status[i].m_additionalData <= 0.0f)
+					//{
+					//	if (m_status.Count != 1)
+					//	{
+					//		m_status.Remove(m_status[i]);
+					//	}
+					//}
+
 					break;
 				case 3: //Block
 					speed = 0;
@@ -102,17 +129,13 @@ public class AI : MonoBehaviour
 					}
 					break;
 				case 6: //Posion
-					Attacked(Time.deltaTime * m_status[i].m_additionalData);
+					Attacked(Time.deltaTime * m_status[i].m_effectiveness);
 					Status weak = m_status[i];
-					if (weak.m_effectiveness != 0)
+					if (weak.m_additionalData >= 1)
 					{
-						speed /= weak.m_effectiveness;
+						speed /= weak.m_additionalData;
 					}
-					weak.m_effectiveness -= Time.deltaTime;
-					if (weak.m_effectiveness > 0.0f && weak.m_effectiveness < 1.0f)
-					{
-						weak.m_effectiveness = 0.0f;
-					}
+					weak.m_additionalData -= Time.deltaTime;
 					m_status[i] = weak;
 
 					if (m_status[i].m_additionalData <= 0.0f)
@@ -134,7 +157,11 @@ public class AI : MonoBehaviour
 		World world = FindObjectOfType<World>();
 		if (world)
 		{
-			world.AddToCoins(m_value);
+			if(isDead)
+			{
+				world.AddToCoins(m_value);
+			}
+			world.DeadNow();
 		}
 	}
 
@@ -195,20 +222,24 @@ public class AI : MonoBehaviour
 	public void StatusChanged(int type, float primaryValue, float addedData, bool AddRemove)
 	{
 		bool alreadyAffect = false;
-		foreach (Status s in m_status)
-		{
-			if(s.m_status == type && s.m_effectiveness == primaryValue && s.m_additionalData == addedData)
-			{
-				if (!AddRemove)
-				{
-					m_status.Remove(s);
-				}
 
-				alreadyAffect = true;
+        if(m_status.Count > 0)
+        {
+            foreach (Status s in m_status)
+            {
+                if (s.m_status == type && s.m_effectiveness == primaryValue && s.m_additionalData == addedData)
+                {
+                    if (!AddRemove)
+                    {
+                        m_status.Remove(s);
+                    }
 
-				break;
-			}
-		}
+                    alreadyAffect = true;
+
+                    break;
+                }
+            }
+        }		
 
 		if (AddRemove && !alreadyAffect)
 		{
@@ -225,6 +256,11 @@ public class AI : MonoBehaviour
 	{
 		if (damage > 0) {
 			m_health -= damage;
+
+            if (m_animator)
+            {
+                m_animator.SetTrigger("Hit");
+            }
 		}
 	}
 }

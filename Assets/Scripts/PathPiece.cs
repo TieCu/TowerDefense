@@ -13,10 +13,16 @@ public class PathPiece : TilePiece
 	[SerializeField] float m_spawnTime = 1.0f;
 	[SerializeField] int m_channel = 0;
 
-	float m_spawnTimer = 0.0f;
+	float m_spawnTimer;
 
 	public eDirection Contribution { get { return m_contribute; } }
 	public eFunction Purpose { get { return m_purpose; } }
+
+	private void Start()
+	{
+		m_spawnTimer = m_spawnTime;
+		Occupied = true;
+	}
 
 	void Update()
 	{
@@ -46,6 +52,12 @@ public class PathPiece : TilePiece
 		{
 			m_spawnTimer += Time.deltaTime;
 		}
+	}
+
+	private void GameOver(bool winLose)
+	{
+		//Ending screen
+		Time.timeScale = 0.0f;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

@@ -5,18 +5,29 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] [Range(.1f, 50.0f)] float m_speed = 1.0f;
-
+   
     GameObject m_targetObject;
     Vector3 m_targetVec;
-    float m_damage;
     Status m_status;
+    float m_damage;
+    float m_maxDistance = 5.0f;
+    string m_enemyTag = "Enemy";
         
     void Update()
     {
         if (m_targetObject)
         {
             m_targetVec = m_targetObject.transform.position;
-        }        
+        }
+        else
+        {
+            m_targetObject = World.Instance.GetNearestGameObject(gameObject, m_enemyTag, m_maxDistance);
+
+            if (m_targetObject)
+            {
+                m_targetVec = m_targetObject.transform.position;
+            }
+        }
 
         Vector3 direction = m_targetVec - transform.position;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction, Vector3.up), 10.0f * Time.deltaTime);
@@ -24,7 +35,7 @@ public class Projectile : MonoBehaviour
         Vector3 velocity = transform.rotation * (Vector3.forward * m_speed);
         transform.position = transform.position + (velocity * Time.deltaTime);
 
-        if(direction.magnitude <= .15f)
+        if (direction.magnitude <= .2f)
         {
             if (m_targetObject)
             {

@@ -5,7 +5,9 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] TowerData m_data;
- 
+
+    [SerializeField] GameObject m_emitter;
+
     public float value { get { return m_data.value; } }
     public float attackRadius { get { return m_data.attackRadius; } }
     public float damage { get { return m_data.damage; } }
@@ -20,7 +22,7 @@ public class Tower : MonoBehaviour
     float m_attackTimer;
 
     void Start()
-    {
+    { 
         m_attackTimer = m_data.attackRate;
 
 		CircleCollider2D circle = gameObject.GetComponent<CircleCollider2D>();
@@ -46,7 +48,7 @@ public class Tower : MonoBehaviour
         {
             if (m_target)
             {
-                Projectile bullet = Instantiate(m_data.projectile, m_data.emitter.transform.position, Quaternion.identity, World.Instance.projectileContainer.transform);
+                Projectile bullet = Instantiate(m_data.projectile, m_emitter.transform.position, Quaternion.identity, World.Instance.projectileContainer.transform);
                 bullet.SetTarget(m_target);
                 bullet.SetDamage_Status(m_data.damage, m_data.towerStatus);
 
