@@ -78,7 +78,7 @@ public class World : Singleton<World>
         }
 		m_TxtMoney.text = "$" + m_coins.ToString();
 
-		     
+		return wasSuccessful;
     }
 	
 }
