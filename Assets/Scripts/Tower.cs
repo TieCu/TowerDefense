@@ -46,7 +46,7 @@ public class Tower : MonoBehaviour
         m_towerType = m_tower1Data.towerType;
         m_towerStatus = m_tower1Data.towerStatus;
         m_sprite = m_tower1Data.sprite;
-        m_upgradeCost = m_tower1Data.upgradeCost;
+        upgradeCost = m_tower1Data.upgradeCost;
 
         m_attackTimer = m_attackRate;
 
@@ -144,7 +144,7 @@ public class Tower : MonoBehaviour
 	public void UpgradeTower()
     {
 
-        if (!fullyUpgraded && World.Instance.RemoveCoins(m_upgradeCost))
+        if (!fullyUpgraded && World.Instance.RemoveCoins(upgradeCost))
         {
             if(m_towerIndex == 0)
             {
