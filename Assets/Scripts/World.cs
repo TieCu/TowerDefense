@@ -26,7 +26,14 @@ public class World : Singleton<World>
 	[SerializeField] TextMeshProUGUI m_TxtLife = null;
 	[SerializeField] TextMeshProUGUI m_TxtMoney = null;
 
-	bool m_gettingReady = true;
+    [Header("Dialogue Stuff")]
+    [SerializeField] GameObject m_endRound1;
+    [SerializeField] GameObject m_endRound2;
+    [SerializeField] GameObject m_endRound3;
+    [SerializeField] GameObject m_endRound7;
+    [SerializeField] GameObject m_endRound9;
+
+    bool m_gettingReady = true;
 	bool m_paused = false;
 	bool m_populationMaxed = false;
 	int m_deadPopulation = 0;
@@ -85,7 +92,32 @@ public class World : Singleton<World>
 			}
 		}
 
-		if(m_health <= 0)
+        if(m_roundIndex == 0 && m_deadPopulation == m_maxPopulation)
+        {
+            m_endRound1.SetActive(true);
+        }
+
+        if (m_roundIndex == 1 && m_deadPopulation == m_maxPopulation)
+        {
+            m_endRound2.SetActive(true);
+        }
+
+        if (m_roundIndex == 2 && m_deadPopulation == m_maxPopulation)
+        {
+            m_endRound3.SetActive(true);
+        }
+
+        if (m_roundIndex == 6 && m_deadPopulation == m_maxPopulation)
+        {
+            m_endRound7.SetActive(true);
+        }
+
+        if (m_roundIndex == 8 && m_deadPopulation == m_maxPopulation)
+        {
+            m_endRound9.SetActive(true);
+        }
+
+        if (m_health <= 0)
 		{
 			GameOver(false);
 		}
